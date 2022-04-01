@@ -8,6 +8,18 @@
     "test": "jest"
   },
   "dependencies": {
+    "@pluralsight/ps-design-system-appframe": "^6.1.1",
+    "@pluralsight/ps-design-system-carousel": "^14.1.1",
+    "@pluralsight/ps-design-system-core": "^10.0.4",
+    "@pluralsight/ps-design-system-layout": "^12.0.14",
+    "@pluralsight/ps-design-system-navbar": "^6.1.1",
+    "@pluralsight/ps-design-system-navbrand": "^5.0.11",
+    "@pluralsight/ps-design-system-navcookiebanner": "^4.1.1",
+    "@pluralsight/ps-design-system-navuser": "^5.0.16",
+    "@pluralsight/ps-design-system-normalize": "^7.0.4",
+    "@pluralsight/ps-design-system-table": "^17.1.1",
+    "@pluralsight/ps-design-system-theme": "^8.1.24",
+    "@pluralsight/ps-design-system-verticaltabs": "^8.1.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
