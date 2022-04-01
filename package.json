@@ -20,8 +20,8 @@
     "@pluralsight/ps-design-system-table": "^17.1.1",
     "@pluralsight/ps-design-system-theme": "^8.1.24",
     "@pluralsight/ps-design-system-verticaltabs": "^8.1.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.2",
