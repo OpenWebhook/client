@@ -4,12 +4,12 @@ import { getMainDefinition } from "@apollo/client/utilities";
 import { createClient } from "graphql-ws";
 
 const httpLink = new HttpLink({
-  uri: "https://webhooks-store.herokuapp.com/graphql",
+  uri: "https://webhook-store.herokuapp.com/graphql",
 });
 
 const wsLink = new GraphQLWsLink(
   createClient({
-    url: "wss://webhooks-store.herokuapp.com/graphql",
+    url: "wss://webhook-store.herokuapp.com/graphql",
   })
 );
 

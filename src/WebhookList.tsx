@@ -8,21 +8,44 @@ const QUERY_WEBHOOKS = gql`
   query Webhooks {
     webhooks {
       id
+      path
+      body
+      headers
     }
   }
 `;
 
-type QueryWebhook = { webhooks: Array<{ id: string }> };
+type QueryWebhook = {
+  webhooks: Array<{ id: string; path: string; body: string; headers: string }>;
+};
 
 const COMMENTS_SUBSCRIPTION = gql`
   subscription WebhookAdded {
     webhookAdded {
       id
+      path
+      body
+      headers
     }
   }
 `;
 
-type SubscriptionWebhook = { webhookAdded: Array<{ id: string }> };
+type SubscriptionWebhook = {
+  webhookAdded: Array<{
+    id: string;
+    path: string;
+    body: string;
+    headers: string;
+  }>;
+};
+
+const largePayloadCellStyle: React.CSSProperties = {
+  width: 500,
+  maxWidth: 500,
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
+};
 
 const WebhookList: React.FC = () => {
   const { data, subscribeToMore } = useQuery<QueryWebhook>(QUERY_WEBHOOKS);
@@ -55,30 +78,48 @@ const WebhookList: React.FC = () => {
         <Table.Head>
           <Table.Row>
             <Table.Header role="columnheader" scope="col" sticky>
-              First name
+              Id
             </Table.Header>
             <Table.Header role="columnheader" scope="col" sticky>
-              Last name
+              Path
             </Table.Header>
-            <Table.Header role="columnheader" scope="col" sticky>
-              Email
+            <Table.Header
+              style={largePayloadCellStyle}
+              role="columnheader"
+              scope="col"
+              sticky
+            >
+              Body
+            </Table.Header>
+            <Table.Header
+              style={largePayloadCellStyle}
+              role="columnheader"
+              scope="col"
+              sticky
+            >
+              Headers
             </Table.Header>
           </Table.Row>
         </Table.Head>
 
         <Table.Body>
           {orderedWebhooks &&
-            orderedWebhooks.map((user, i) => (
+            orderedWebhooks.map((webhook, i) => (
               <Table.Row key={i}>
                 <Table.Header role="rowheader" scope="row">
                   <FlexContainer>
-                    <Avatar alt="avatar" name={`${user.id}`} size="xSmall" />
+                    <Avatar alt="avatar" name={`${webhook.id}`} size="xSmall" />
                     <HorzSpacer />
-                    <span>{user.id}</span>
+                    <span>{webhook.id}</span>
                   </FlexContainer>
                 </Table.Header>
-                <Table.Cell>{"croute"}</Table.Cell>
-                <Table.Cell>{"croute"}</Table.Cell>
+                <Table.Cell>{webhook.path}</Table.Cell>
+                <Table.Cell style={largePayloadCellStyle}>
+                  {webhook.body}
+                </Table.Cell>
+                <Table.Cell style={largePayloadCellStyle}>
+                  {webhook.headers}
+                </Table.Cell>
               </Table.Row>
             ))}
         </Table.Body>
