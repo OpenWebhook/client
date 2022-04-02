@@ -7,6 +7,7 @@ import * as core from "@pluralsight/ps-design-system-core";
 import * as Layout from "@pluralsight/ps-design-system-layout";
 import Theme from "@pluralsight/ps-design-system-theme";
 import { SkillsTopNav } from "./TopNav";
+import WebhookList from "./WebhookList";
 
 // https://coolors.co/23f0c7-fb6107-f3de2c-5c8001-fbb02d
 
@@ -15,9 +16,7 @@ export default function App() {
     <Theme name={Theme.names.dark}>
       <ExampleFrame>
         <div style={{ background: core.colorsBlack }}>
-          <Layout.PageWidthLayout>
-            <Layout.PageHeadingLayout heading={<h1>Webhooks list</h1>} />
-          </Layout.PageWidthLayout>
+          <WebhookList />
         </div>
       </ExampleFrame>
     </Theme>
