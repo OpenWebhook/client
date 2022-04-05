@@ -3,29 +3,34 @@ import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { createClient } from "graphql-ws";
 
-const httpLink = new HttpLink({
-  uri: "https://webhook-store.herokuapp.com/graphql",
-});
+export const createApolloClient = (httpUrl: string) => {
+  const graphqlUrl = `${httpUrl}/graphql`;
+  const wsUrl = graphqlUrl.replace("http", "ws");
 
-const wsLink = new GraphQLWsLink(
-  createClient({
-    url: "wss://webhook-store.herokuapp.com/graphql",
-  })
-);
+  const httpLink = new HttpLink({
+    uri: graphqlUrl,
+  });
 
-const splitLink = split(
-  ({ query }) => {
-    const definition = getMainDefinition(query);
-    return (
-      definition.kind === "OperationDefinition" &&
-      definition.operation === "subscription"
-    );
-  },
-  wsLink,
-  httpLink
-);
+  const wsLink = new GraphQLWsLink(
+    createClient({
+      url: wsUrl,
+    })
+  );
 
-export const apolloClient = new ApolloClient({
-  link: splitLink,
-  cache: new InMemoryCache(),
-});
+  const splitLink = split(
+    ({ query }) => {
+      const definition = getMainDefinition(query);
+      return (
+        definition.kind === "OperationDefinition" &&
+        definition.operation === "subscription"
+      );
+    },
+    wsLink,
+    httpLink
+  );
+
+  return new ApolloClient({
+    link: splitLink,
+    cache: new InMemoryCache(),
+  });
+};

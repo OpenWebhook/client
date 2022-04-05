@@ -2,6 +2,7 @@ import NavBar from "@pluralsight/ps-design-system-navbar";
 import NavBrand from "@pluralsight/ps-design-system-navbrand";
 import React from "react";
 import { RedirectUrlInput } from "./RedirectUrl/RedirectUrlInput";
+import { WebhookStoreUrlInput } from "./WebhookStoreUrl/StoreInputUrl";
 
 function SkillsLogo() {
   return (
@@ -40,7 +41,10 @@ export function SkillsTopNav() {
     <div>
       <NavBar
         brand={<SkillsBranding />}
-        items={[<RedirectUrlInput key={"RedirectUrlInput"} />]}
+        items={[
+          <WebhookStoreUrlInput key={"WebhookStoreUrlInput"} />,
+          <RedirectUrlInput key={"RedirectUrlInput"} />,
+        ]}
       />
     </div>
   );
