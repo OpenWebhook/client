@@ -8,8 +8,8 @@ import Theme from "@pluralsight/ps-design-system-theme";
 import { SkillsTopNav } from "./TopNav";
 import WebhookList from "./WebhookList";
 import { ApolloProvider } from "@apollo/client";
-import { RedirectUrlContext } from "./RedirectUrl/redirect-url-context";
-import { WebhookStoreUrlContext } from "./WebhookStoreUrl/webhook-store-url-context";
+import { RedirectUrlContext } from "./RedirectUrl/RedirectUrl.context";
+import { WebhookStoreUrlContext } from "./WebhookStoreUrl/WebhookStoreUrl.context";
 import { createApolloClient } from "./apollo.client";
 
 // https://coolors.co/23f0c7-fb6107-f3de2c-5c8001-fbb02d
@@ -24,35 +24,25 @@ export default function App() {
     <WebhookStoreUrlContext.Provider
       value={{
         value: webhooksStoreUrl,
-        setValue: setWebhooksStoreUrl as () => {},
+        setValue: setWebhooksStoreUrl,
       }}
     >
-      <WebhookStoreUrlContext.Consumer>
-        {(webhookStoreUrlContextValue) => (
-          <ApolloProvider
-            client={createApolloClient(webhookStoreUrlContextValue.value)}
+      <ApolloProvider client={createApolloClient(webhooksStoreUrl)}>
+        <Theme name={Theme.names.dark}>
+          <RedirectUrlContext.Provider
+            value={{
+              value: redirectUrl,
+              setValue: setRedirectUrl,
+            }}
           >
-            <Theme name={Theme.names.dark}>
-              <RedirectUrlContext.Provider
-                value={{
-                  value: redirectUrl,
-                  setValue: setRedirectUrl as () => {},
-                }}
-              >
-                <ExampleFrame>
-                  <div style={{ background: core.colorsBlack }}>
-                    <RedirectUrlContext.Consumer>
-                      {(redirectUrlContextValue) => (
-                        <WebhookList baseUrl={redirectUrlContextValue.value} />
-                      )}
-                    </RedirectUrlContext.Consumer>
-                  </div>
-                </ExampleFrame>
-              </RedirectUrlContext.Provider>
-            </Theme>
-          </ApolloProvider>
-        )}
-      </WebhookStoreUrlContext.Consumer>
+            <ExampleFrame>
+              <div style={{ background: core.colorsBlack }}>
+                <WebhookList baseUrl={redirectUrl} />
+              </div>
+            </ExampleFrame>
+          </RedirectUrlContext.Provider>
+        </Theme>
+      </ApolloProvider>
     </WebhookStoreUrlContext.Provider>
   );
 }

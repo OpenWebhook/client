@@ -1,8 +1,8 @@
 import NavBar from "@pluralsight/ps-design-system-navbar";
 import NavBrand from "@pluralsight/ps-design-system-navbrand";
 import React from "react";
-import { RedirectUrlInput } from "./RedirectUrl/RedirectUrlInput";
-import { WebhookStoreUrlInput } from "./WebhookStoreUrl/StoreInputUrl";
+import { RedirectUrlInput } from "./RedirectUrl/RedirectUrl.component";
+import { WebhookStoreUrlInput } from "./WebhookStoreUrl/WebhookStoreUrl.component";
 
 function SkillsLogo() {
   return (

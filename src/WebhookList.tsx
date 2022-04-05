@@ -4,7 +4,6 @@ import Table from "@pluralsight/ps-design-system-table";
 import React, { useEffect, useMemo } from "react";
 import { gql, useQuery } from "@apollo/client";
 import { forwardWebhookToLocalhost } from "./forward-to-localhost";
-import { RedirectUrlContext } from "./RedirectUrl/redirect-url-context";
 
 export type Webhook = {
   id: string;
