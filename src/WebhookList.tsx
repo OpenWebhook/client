@@ -3,6 +3,14 @@ import Avatar from "@pluralsight/ps-design-system-avatar";
 import Table from "@pluralsight/ps-design-system-table";
 import React, { useEffect, useMemo } from "react";
 import { gql, useQuery } from "@apollo/client";
+import { forwardWebhookToLocalhost } from "./forward-to-localhost";
+
+export type Webhook = {
+  id: string;
+  path: string;
+  body: string;
+  headers: string;
+};
 
 const QUERY_WEBHOOKS = gql`
   query Webhooks {
@@ -16,7 +24,7 @@ const QUERY_WEBHOOKS = gql`
 `;
 
 type QueryWebhook = {
-  webhooks: Array<{ id: string; path: string; body: string; headers: string }>;
+  webhooks: Array<Webhook>;
 };
 
 const COMMENTS_SUBSCRIPTION = gql`
@@ -31,12 +39,7 @@ const COMMENTS_SUBSCRIPTION = gql`
 `;
 
 type SubscriptionWebhook = {
-  webhookAdded: Array<{
-    id: string;
-    path: string;
-    body: string;
-    headers: string;
-  }>;
+  webhookAdded: Array<Webhook>;
 };
 
 const largePayloadCellStyle: React.CSSProperties = {
@@ -105,7 +108,12 @@ const WebhookList: React.FC = () => {
         <Table.Body>
           {orderedWebhooks &&
             orderedWebhooks.map((webhook, i) => (
-              <Table.Row key={i}>
+              <Table.Row
+                key={i}
+                onClick={() => {
+                  forwardWebhookToLocalhost(webhook);
+                }}
+              >
                 <Table.Header role="rowheader" scope="row">
                   <FlexContainer>
                     <Avatar alt="avatar" name={`${webhook.id}`} size="xSmall" />
