@@ -4,6 +4,7 @@ import Table from "@pluralsight/ps-design-system-table";
 import React, { useEffect, useMemo } from "react";
 import { gql, useQuery } from "@apollo/client";
 import { forwardWebhookToLocalhost } from "./forward-to-localhost";
+import { RedirectUrlContext } from "./RedirectUrl/redirect-url-context";
 
 export type Webhook = {
   id: string;
@@ -50,7 +51,9 @@ const largePayloadCellStyle: React.CSSProperties = {
   whiteSpace: "nowrap",
 };
 
-const WebhookList: React.FC = () => {
+const WebhookList: React.FC<{ baseUrl: string }> = (props: {
+  baseUrl: string;
+}) => {
   const { data, subscribeToMore } = useQuery<QueryWebhook>(QUERY_WEBHOOKS);
   useEffect(() => {
     const unsuscribe = subscribeToMore<SubscriptionWebhook>({
@@ -74,6 +77,10 @@ const WebhookList: React.FC = () => {
       return Number(b.id) - Number(a.id);
     });
   }, [data]);
+
+  const forwardWebhookToLocalhostCreator = (webhook: Webhook) => {
+    return forwardWebhookToLocalhost(props.baseUrl, webhook);
+  };
 
   return (
     <div style={{ height: 700 }}>
@@ -111,7 +118,7 @@ const WebhookList: React.FC = () => {
               <Table.Row
                 key={i}
                 onClick={() => {
-                  forwardWebhookToLocalhost(webhook);
+                  forwardWebhookToLocalhostCreator(webhook);
                 }}
               >
                 <Table.Header role="rowheader" scope="row">

@@ -22,6 +22,8 @@
     "@pluralsight/ps-design-system-navuser": "^5.0.16",
     "@pluralsight/ps-design-system-normalize": "^7.0.4",
     "@pluralsight/ps-design-system-table": "^17.1.1",
+    "@pluralsight/ps-design-system-text": "^20.1.27",
+    "@pluralsight/ps-design-system-textinput": "^12.1.1",
     "@pluralsight/ps-design-system-theme": "^8.1.24",
     "@pluralsight/ps-design-system-verticaltabs": "^8.1.1",
     "@storybook/react": "^6.4.20",

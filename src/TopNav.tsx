@@ -1,6 +1,7 @@
 import NavBar from "@pluralsight/ps-design-system-navbar";
 import NavBrand from "@pluralsight/ps-design-system-navbrand";
 import React from "react";
+import { RedirectUrlInput } from "./RedirectUrl/RedirectUrlInput";
 
 function SkillsLogo() {
   return (
@@ -37,7 +38,10 @@ function SkillsBranding(props: any) {
 export function SkillsTopNav() {
   return (
     <div>
-      <NavBar brand={<SkillsBranding />} items={[]} />
+      <NavBar
+        brand={<SkillsBranding />}
+        items={[<RedirectUrlInput key={"RedirectUrlInput"} />]}
+      />
     </div>
   );
 }

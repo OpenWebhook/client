@@ -2,9 +2,9 @@ import { Webhook } from "./WebhookList";
 import axios, { Method, AxiosRequestConfig } from "axios";
 
 export const forwardWebhookToLocalhost = async (
+  baseUrl: string,
   webhook: Webhook
 ): Promise<void> => {
-  const baseUrl = "http://localhost:3001";
   const options: AxiosRequestConfig = {
     method: "POST",
     url: `${baseUrl}/webhook/${webhook.path}`,
