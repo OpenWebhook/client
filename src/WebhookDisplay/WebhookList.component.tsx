@@ -1,7 +1,9 @@
 import React, { useEffect, useMemo } from "react";
 import { gql, useQuery } from "@apollo/client";
 import { forwardWebhookToLocalhost } from "../forward-to-localhost";
-import { WebhookTable } from "./WebhookTable";
+import { WebhookTable } from "./WebhookTable.component";
+import { AsideLayout } from "@pluralsight/ps-design-system-layout";
+import { WebhookPanel } from "./WebhookPanel.component";
 
 export type Webhook = {
   id: string;
@@ -72,12 +74,26 @@ const WebhookList: React.FC<{ baseUrl: string }> = (props: {
   };
 
   return (
-    <div style={{ height: 700 }}>
-      <WebhookTable
-        webhooks={orderedWebhooks || []}
-        forwardWebhookToLocalhostCreator={forwardWebhookToLocalhostCreator}
-      />
-    </div>
+    <AsideLayout
+      aside={
+        <AsideLayout.Aside>
+          <WebhookPanel />
+        </AsideLayout.Aside>
+      }
+      asidePosition={AsideLayout.asidePositions.last}
+      main={
+        <AsideLayout.Main>
+          <div style={{ height: 700 }}>
+            <WebhookTable
+              webhooks={orderedWebhooks || []}
+              forwardWebhookToLocalhostCreator={
+                forwardWebhookToLocalhostCreator
+              }
+            />
+          </div>
+        </AsideLayout.Main>
+      }
+    />
   );
 };
 

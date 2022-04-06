@@ -2,7 +2,7 @@ import { layout } from "@pluralsight/ps-design-system-core";
 import Table from "@pluralsight/ps-design-system-table";
 import React from "react";
 import Avatar from "@pluralsight/ps-design-system-avatar";
-import { Webhook } from "./WebhookList";
+import { Webhook } from "./WebhookList.component";
 
 const largePayloadCellStyle: React.CSSProperties = {
   width: 500,
