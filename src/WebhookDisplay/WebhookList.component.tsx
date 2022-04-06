@@ -4,6 +4,7 @@ import { forwardWebhookToLocalhost } from "../forward-to-localhost";
 import { WebhookTable } from "./WebhookTable.component";
 import { AsideLayout } from "@pluralsight/ps-design-system-layout";
 import { WebhookPanel } from "./WebhookPanel.component";
+import Emptystate from "./EmptyState.component";
 
 export type Webhook = {
   id: string;
@@ -61,7 +62,6 @@ const WebhookList: React.FC<{ baseUrl: string }> = (props: {
       unsuscribe();
     };
   }, []);
-  console.log(data);
 
   const orderedWebhooks = useMemo(() => {
     return data?.webhooks?.slice().sort((a, b) => {
@@ -73,7 +73,7 @@ const WebhookList: React.FC<{ baseUrl: string }> = (props: {
     return forwardWebhookToLocalhost(props.baseUrl, webhook);
   };
 
-  return (
+  return orderedWebhooks ? (
     <AsideLayout
       aside={
         <AsideLayout.Aside>
@@ -83,7 +83,7 @@ const WebhookList: React.FC<{ baseUrl: string }> = (props: {
       asidePosition={AsideLayout.asidePositions.last}
       main={
         <AsideLayout.Main>
-          <div style={{ height: 700 }}>
+          <div style={{ height: "calc(100vh - 48px)" }}>
             <WebhookTable
               webhooks={orderedWebhooks || []}
               forwardWebhookToLocalhostCreator={
@@ -94,6 +94,8 @@ const WebhookList: React.FC<{ baseUrl: string }> = (props: {
         </AsideLayout.Main>
       }
     />
+  ) : (
+    <Emptystate />
   );
 };
 

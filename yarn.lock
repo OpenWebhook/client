@@ -1602,6 +1602,14 @@
   dependencies:
     "@pluralsight/ps-design-system-util" "^10.1.3"
 
+"@pluralsight/ps-design-system-emptystate@^14.1.1":
+  version "14.1.1"
+  resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-emptystate/-/ps-design-system-emptystate-14.1.1.tgz#f88842d74e425464de704710258ee00ba7e2dcc7"
+  integrity sha512-sn3i7YBRo311rNSrhiZsnLJ+mP6OQJ4Izgv/cctvFoS8oRP7sn/k/KJG61O4dqZ64CIDEypfZrr9H7GpdKGtZQ==
+  dependencies:
+    "@pluralsight/ps-design-system-core" "^10.0.4"
+    "@pluralsight/ps-design-system-util" "^10.1.3"
+
 "@pluralsight/ps-design-system-halo@^12.0.8":
   version "12.0.8"
   resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-halo/-/ps-design-system-halo-12.0.8.tgz#1e6cd43f679e7dd1ede5799546f8ac776941858d"
