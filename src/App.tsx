@@ -6,7 +6,7 @@ import AppFrame from "@pluralsight/ps-design-system-appframe";
 import * as core from "@pluralsight/ps-design-system-core";
 import Theme from "@pluralsight/ps-design-system-theme";
 import { SkillsTopNav } from "./TopNav";
-import WebhookList from "./WebhookList";
+import WebhookList from "./WebhookDisplay/WebhookList.component";
 import { ApolloProvider } from "@apollo/client";
 import { RedirectUrlContext } from "./RedirectUrl/RedirectUrl.context";
 import { WebhookStoreUrlContext } from "./WebhookStoreUrl/WebhookStoreUrl.context";
@@ -41,7 +41,7 @@ export default function App() {
               }}
             >
               <div style={{ background: core.colorsBlack }}>
-                <WebhookList baseUrl={redirectUrl} />
+                <WebhookList />
               </div>
             </AppFrame>
           </RedirectUrlContext.Provider>

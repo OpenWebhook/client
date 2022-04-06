@@ -13,8 +13,10 @@
   "dependencies": {
     "@apollo/client": "^3.5.10",
     "@pluralsight/ps-design-system-appframe": "^6.1.1",
+    "@pluralsight/ps-design-system-button": "^24.1.1",
     "@pluralsight/ps-design-system-carousel": "^14.1.1",
     "@pluralsight/ps-design-system-core": "^10.0.4",
+    "@pluralsight/ps-design-system-emptystate": "^14.1.1",
     "@pluralsight/ps-design-system-layout": "^12.0.14",
     "@pluralsight/ps-design-system-navbar": "^6.1.1",
     "@pluralsight/ps-design-system-navbrand": "^5.0.11",
