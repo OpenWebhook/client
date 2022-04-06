@@ -31,9 +31,7 @@ function SkillsLogo() {
 }
 
 function SkillsBranding(props: any) {
-  return (
-    <NavBrand {...props} logo={<SkillsLogo />} wordmark="Webhooks Are Fun" />
-  );
+  return <NavBrand {...props} logo={<SkillsLogo />} wordmark="Open Webhook" />;
 }
 
 export function SkillsTopNav() {
