@@ -5,6 +5,7 @@ import { WebhookTable } from "./WebhookTable.component";
 import { AsideLayout } from "@pluralsight/ps-design-system-layout";
 import { WebhookPanel } from "./WebhookPanel.component";
 import Emptystate from "./EmptyState.component";
+import { WebhookPage } from "./WebhookPage.component";
 
 export type Webhook = {
   id: string;
@@ -43,9 +44,7 @@ type SubscriptionWebhook = {
   webhookAdded: Array<Webhook>;
 };
 
-const WebhookList: React.FC<{ baseUrl: string }> = (props: {
-  baseUrl: string;
-}) => {
+const WebhookList: React.FC = () => {
   const { data, subscribeToMore } = useQuery<QueryWebhook>(QUERY_WEBHOOKS);
   useEffect(() => {
     const unsuscribe = subscribeToMore<SubscriptionWebhook>({
@@ -69,31 +68,8 @@ const WebhookList: React.FC<{ baseUrl: string }> = (props: {
     });
   }, [data]);
 
-  const forwardWebhookToLocalhostCreator = (webhook: Webhook) => {
-    return forwardWebhookToLocalhost(props.baseUrl, webhook);
-  };
-
-  return orderedWebhooks ? (
-    <AsideLayout
-      aside={
-        <AsideLayout.Aside>
-          <WebhookPanel />
-        </AsideLayout.Aside>
-      }
-      asidePosition={AsideLayout.asidePositions.last}
-      main={
-        <AsideLayout.Main>
-          <div style={{ height: "calc(100vh - 48px)" }}>
-            <WebhookTable
-              webhooks={orderedWebhooks || []}
-              forwardWebhookToLocalhostCreator={
-                forwardWebhookToLocalhostCreator
-              }
-            />
-          </div>
-        </AsideLayout.Main>
-      }
-    />
+  return orderedWebhooks && orderedWebhooks.length > 0 ? (
+    <WebhookPage webhooks={orderedWebhooks} />
   ) : (
     <Emptystate />
   );

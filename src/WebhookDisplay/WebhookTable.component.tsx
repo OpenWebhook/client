@@ -28,8 +28,8 @@ const HorzSpacer: React.FC = (props) => (
 
 export const WebhookTable: React.FC<{
   webhooks: Webhook[];
-  forwardWebhookToLocalhostCreator: (arg: Webhook) => void;
-}> = ({ webhooks, forwardWebhookToLocalhostCreator }) => {
+  setSelectedRow: (webhookIndex: number) => void;
+}> = ({ webhooks, setSelectedRow }) => {
   return (
     <Table scrollable>
       <Table.Head>
@@ -65,7 +65,7 @@ export const WebhookTable: React.FC<{
             <Table.Row
               key={i}
               onClick={() => {
-                forwardWebhookToLocalhostCreator(webhook);
+                setSelectedRow(i);
               }}
             >
               <Table.Header role="rowheader" scope="row">

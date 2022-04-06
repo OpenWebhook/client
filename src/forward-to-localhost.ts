@@ -1,5 +1,5 @@
-import { Webhook } from "./WebhookDisplay/WebhookList";
-import axios, { Method, AxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
+import { Webhook } from "./WebhookDisplay/WebhookList.component";
 
 export const forwardWebhookToLocalhost = async (
   baseUrl: string,

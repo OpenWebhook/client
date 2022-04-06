@@ -41,7 +41,7 @@ export default function App() {
               }}
             >
               <div style={{ background: core.colorsBlack }}>
-                <WebhookList baseUrl={redirectUrl} />
+                <WebhookList />
               </div>
             </AppFrame>
           </RedirectUrlContext.Provider>
