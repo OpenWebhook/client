@@ -35,36 +35,18 @@ export default function App() {
               setValue: setRedirectUrl,
             }}
           >
-            <ExampleFrame>
+            <AppFrame
+              topnav={() => {
+                return <SkillsTopNav />;
+              }}
+            >
               <div style={{ background: core.colorsBlack }}>
                 <WebhookList baseUrl={redirectUrl} />
               </div>
-            </ExampleFrame>
+            </AppFrame>
           </RedirectUrlContext.Provider>
         </Theme>
       </ApolloProvider>
     </WebhookStoreUrlContext.Provider>
-  );
-}
-
-function ExampleFrame(props: {
-  children:
-    | boolean
-    | React.ReactChild
-    | React.ReactFragment
-    | React.ReactPortal
-    | null
-    | undefined;
-}) {
-  return (
-    <>
-      <AppFrame
-        topnav={() => {
-          return <SkillsTopNav />;
-        }}
-      >
-        {props.children}
-      </AppFrame>
-    </>
   );
 }
