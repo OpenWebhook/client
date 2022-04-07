@@ -13,8 +13,12 @@ export const WebhookPanel: React.FC<{
   forwardWebhookToLocalhost: (webhook: Webhook) => void;
 }> = ({ webhook, forwardWebhookToLocalhost }) => {
   return (
-    <PageWidthLayout style={{ padding: `0 ${layout.spacingXSmall}` }}>
+    <PageWidthLayout
+      key={"PageWidthLayout"}
+      style={{ padding: `0 ${layout.spacingXSmall}` }}
+    >
       <PageHeadingLayout
+        key={"PageHeadingLayout"}
         style={{ padding: `${layout.spacingXSmall} 0` }}
         actions={[
           <Button
@@ -33,9 +37,9 @@ export const WebhookPanel: React.FC<{
         }
       >
         <div className="outline">
-          {Object.keys(JSON.parse(webhook.body)).map(function (key) {
+          {Object.keys(JSON.parse(webhook.body)).map(function (key, i) {
             return (
-              <P>
+              <P key={`webhookElement${i}`}>
                 {key}: {typeof JSON.parse(webhook.body)[key]}
               </P>
             );
