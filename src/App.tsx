@@ -15,7 +15,7 @@ import { createApolloClient } from "./apollo.client";
 // https://coolors.co/23f0c7-fb6107-f3de2c-5c8001-fbb02d
 
 export default function App() {
-  const [redirectUrl, setRedirectUrl] = useState("http://localhost:9001");
+  const [redirectUrl, setRedirectUrl] = useState("http://localhost:8010/proxy");
   const [webhooksStoreUrl, setWebhooksStoreUrl] = useState(
     "https://webhook-store.herokuapp.com"
   );

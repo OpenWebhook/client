@@ -16,7 +16,7 @@ export function RedirectUrlInput() {
       </Label>
       <TextInput
         appearance={TextInput.appearances.subtle}
-        placeholder="localhost:9000"
+        placeholder="http://localhost:8010/proxy"
         size={TextInput.sizes.small}
         defaultValue={value}
         onBlur={(event) => {
