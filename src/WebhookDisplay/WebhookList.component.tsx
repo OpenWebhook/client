@@ -1,9 +1,5 @@
 import React, { useEffect, useMemo } from "react";
 import { gql, useQuery } from "@apollo/client";
-import { forwardWebhookToLocalhost } from "../forward-to-localhost";
-import { WebhookTable } from "./WebhookTable.component";
-import { AsideLayout } from "@pluralsight/ps-design-system-layout";
-import { WebhookPanel } from "./WebhookPanel.component";
 import Emptystate from "./EmptyState.component";
 import { WebhookPage } from "./WebhookPage.component";
 

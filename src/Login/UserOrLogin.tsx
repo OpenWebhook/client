@@ -1,6 +1,5 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { P } from "@pluralsight/ps-design-system-text";
 import Button from "@pluralsight/ps-design-system-button";
 import NavUser from "@pluralsight/ps-design-system-navuser";
 

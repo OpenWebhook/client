@@ -1,7 +1,5 @@
 import { AsideLayout } from "@pluralsight/ps-design-system-layout";
-import React, { useContext, useState } from "react";
-import { forwardWebhookToLocalhost } from "../forward-to-localhost";
-import { RedirectUrlContext } from "../RedirectUrl/RedirectUrl.context";
+import React, { useState } from "react";
 import { Webhook } from "./WebhookList.component";
 import { WebhookPanel } from "./WebhookPanel.component";
 import { WebhookTable } from "./WebhookTable.component";
