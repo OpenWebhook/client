@@ -1,8 +1,8 @@
-import { defineConfig } from "vite";
+import { defineConfig, splitVendorChunkPlugin } from "vite";
 import reactRefresh from "@vitejs/plugin-react-refresh";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: "/client/",
-  plugins: [reactRefresh()],
+  plugins: [reactRefresh(), splitVendorChunkPlugin()],
 });
