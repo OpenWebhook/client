@@ -3,7 +3,8 @@ import { Webhook } from "./WebhookDisplay/WebhookList.component";
 
 export const forwardWebhookToLocalhost = async (
   baseUrl: string,
-  webhook: Webhook
+  webhook: Webhook,
+  setWebhookResponse: Function
 ): Promise<void> => {
   const options: AxiosRequestConfig = {
     method: "POST",
@@ -14,9 +15,11 @@ export const forwardWebhookToLocalhost = async (
   axios
     .request(options)
     .then(function (response) {
+      setWebhookResponse({ code: response.status });
       console.log(response.data);
     })
     .catch(function (error) {
+      setWebhookResponse({ code: 500, error: error.toString() });
       console.error(error);
     });
 };

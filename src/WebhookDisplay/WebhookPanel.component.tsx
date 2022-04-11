@@ -5,13 +5,24 @@ import {
   PageWidthLayout,
 } from "@pluralsight/ps-design-system-layout";
 import { Heading, P } from "@pluralsight/ps-design-system-text";
-import React from "react";
+import React, { useContext, useState } from "react";
+import { forwardWebhookToLocalhost } from "../forward-to-localhost";
+import { RedirectUrlContext } from "../RedirectUrl/RedirectUrl.context";
 import { Webhook } from "./WebhookList.component";
 
 export const WebhookPanel: React.FC<{
   webhook: Webhook;
-  forwardWebhookToLocalhost: (webhook: Webhook) => void;
-}> = ({ webhook, forwardWebhookToLocalhost }) => {
+}> = ({ webhook }) => {
+  const { value: baseUrl } = useContext(RedirectUrlContext);
+
+  const [webhookResponse, setWebhookResponse] = useState<{
+    code?: number;
+    error?: any;
+  }>({
+    code: undefined,
+    error: undefined,
+  });
+
   return (
     <PageWidthLayout
       key={"PageWidthLayout"}
@@ -30,11 +41,13 @@ export const WebhookPanel: React.FC<{
         <Button
           key="forwardWebhookToLocalhost"
           onClick={() => {
-            forwardWebhookToLocalhost(webhook);
+            forwardWebhookToLocalhost(baseUrl, webhook, setWebhookResponse);
           }}
         >
           Send
         </Button>
+        <P>{webhookResponse.code}</P>
+        <P>{webhookResponse.error}</P>
         <div className="outline">
           {Object.keys(JSON.parse(webhook.body)).map(function (key, i) {
             return (

@@ -9,22 +9,13 @@ import { WebhookTable } from "./WebhookTable.component";
 export const WebhookPage: React.FC<{ webhooks: Webhook[] }> = ({
   webhooks,
 }) => {
-  const { value: baseUrl } = useContext(RedirectUrlContext);
-
-  const forwardWebhookToLocalhostCreator = (webhook: Webhook) => {
-    return forwardWebhookToLocalhost(baseUrl, webhook);
-  };
-
   const [selectedRow, setSelectedRow] = useState(0);
 
   return (
     <AsideLayout
       aside={
         <AsideLayout.Aside>
-          <WebhookPanel
-            webhook={webhooks[selectedRow]}
-            forwardWebhookToLocalhost={forwardWebhookToLocalhostCreator}
-          />
+          <WebhookPanel webhook={webhooks[selectedRow]} />
         </AsideLayout.Aside>
       }
       asidePosition={AsideLayout.asidePositions.last}
