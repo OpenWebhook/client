@@ -1,6 +1,6 @@
 import "@pluralsight/ps-design-system-normalize";
 
-import React, { useState } from "react";
+import React from "react";
 
 import AppFrame from "@pluralsight/ps-design-system-appframe";
 import * as core from "@pluralsight/ps-design-system-core";
@@ -16,7 +16,10 @@ import { useStateInLocalStorage } from "./use-state-with-local-storage.hook";
 // https://coolors.co/23f0c7-fb6107-f3de2c-5c8001-fbb02d
 
 export default function App() {
-  const [redirectUrl, setRedirectUrl] = useState("http://localhost:8010/proxy");
+  const [redirectUrl, setRedirectUrl] = useStateInLocalStorage(
+    "redirectUrl",
+    "http://localhost:8010/proxy"
+  );
 
   const [webhookStoreUrl, setWebhooksStoreUrl] = useStateInLocalStorage(
     "webhookStoreUrl",
