@@ -4,7 +4,7 @@ import Button from "@pluralsight/ps-design-system-button";
 
 const Emptystate = () => (
   <EmptyState
-    style={{ height: "100vh" }}
+    style={{ height: "calc(100vh - 48px)" }}
     heading={
       <EmptyState.Heading>Alohamora wand elf parchment</EmptyState.Heading>
     }
