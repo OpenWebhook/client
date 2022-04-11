@@ -16,15 +16,23 @@ import { createApolloClient } from "./apollo.client";
 
 export default function App() {
   const [redirectUrl, setRedirectUrl] = useState("http://localhost:8010/proxy");
+
+  const initialWebhookStoreUrl =
+    localStorage.getItem("webhookStoreUrl") ||
+    "https://webhook-store.herokuapp.com";
   const [webhooksStoreUrl, setWebhooksStoreUrl] = useState(
-    "https://webhook-store.herokuapp.com"
+    initialWebhookStoreUrl
   );
+  const setWebhookStoreURLInLocalStorage = (newValue: string) => {
+    localStorage.setItem("webhookStoreUrl", newValue);
+    setWebhooksStoreUrl(newValue);
+  };
 
   return (
     <WebhookStoreUrlContext.Provider
       value={{
         value: webhooksStoreUrl,
-        setValue: setWebhooksStoreUrl,
+        setValue: setWebhookStoreURLInLocalStorage,
       }}
     >
       <ApolloProvider client={createApolloClient(webhooksStoreUrl)}>
