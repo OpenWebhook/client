@@ -20,22 +20,21 @@ export const WebhookPanel: React.FC<{
       <PageHeadingLayout
         key={"PageHeadingLayout"}
         style={{ padding: `${layout.spacingXSmall} 0` }}
-        actions={[
-          <Button
-            key="forwardWebhookToLocalhost"
-            onClick={() => {
-              forwardWebhookToLocalhost(webhook);
-            }}
-          >
-            Button
-          </Button>,
-        ]}
+        actions={[]}
         heading={
           <Heading size={Heading.sizes.xSmall}>
             <h2>{webhook.path}</h2>
           </Heading>
         }
       >
+        <Button
+          key="forwardWebhookToLocalhost"
+          onClick={() => {
+            forwardWebhookToLocalhost(webhook);
+          }}
+        >
+          Send
+        </Button>
         <div className="outline">
           {Object.keys(JSON.parse(webhook.body)).map(function (key, i) {
             return (
