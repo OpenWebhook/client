@@ -4,7 +4,8 @@ import { getMainDefinition } from "@apollo/client/utilities";
 import { createClient } from "graphql-ws";
 
 export const createApolloClient = (httpUrl: string) => {
-  const graphqlUrl = `${httpUrl}/graphql`;
+  const origin = new URL(httpUrl).origin;
+  const graphqlUrl = `${origin}/graphql`;
   const wsUrl = graphqlUrl.replace("http", "ws");
 
   const httpLink = new HttpLink({
