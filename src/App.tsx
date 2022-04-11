@@ -12,6 +12,7 @@ import { RedirectUrlContext } from "./RedirectUrl/RedirectUrl.context";
 import { WebhookStoreUrlContext } from "./WebhookStoreUrl/WebhookStoreUrl.context";
 import { createApolloClient } from "./apollo.client";
 import { useStateInLocalStorage } from "./use-state-with-local-storage.hook";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 // https://coolors.co/23f0c7-fb6107-f3de2c-5c8001-fbb02d
 
@@ -27,32 +28,38 @@ export default function App() {
   );
 
   return (
-    <WebhookStoreUrlContext.Provider
-      value={{
-        value: webhookStoreUrl,
-        setValue: setWebhooksStoreUrl,
-      }}
+    <Auth0Provider
+      domain="sammyt.eu.auth0.com"
+      clientId="paWK0IJDaDkB24vqfDBiyPsWfoVzF3GK"
+      redirectUri={window.location.origin}
     >
-      <ApolloProvider client={createApolloClient(webhookStoreUrl)}>
-        <Theme name={Theme.names.dark}>
-          <RedirectUrlContext.Provider
-            value={{
-              value: redirectUrl,
-              setValue: setRedirectUrl,
-            }}
-          >
-            <AppFrame
-              topnav={() => {
-                return <SkillsTopNav />;
+      <WebhookStoreUrlContext.Provider
+        value={{
+          value: webhookStoreUrl,
+          setValue: setWebhooksStoreUrl,
+        }}
+      >
+        <ApolloProvider client={createApolloClient(webhookStoreUrl)}>
+          <Theme name={Theme.names.dark}>
+            <RedirectUrlContext.Provider
+              value={{
+                value: redirectUrl,
+                setValue: setRedirectUrl,
               }}
             >
-              <div style={{ background: core.colorsBlack }}>
-                <WebhookList />
-              </div>
-            </AppFrame>
-          </RedirectUrlContext.Provider>
-        </Theme>
-      </ApolloProvider>
-    </WebhookStoreUrlContext.Provider>
+              <AppFrame
+                topnav={() => {
+                  return <SkillsTopNav />;
+                }}
+              >
+                <div style={{ background: core.colorsBlack }}>
+                  <WebhookList />
+                </div>
+              </AppFrame>
+            </RedirectUrlContext.Provider>
+          </Theme>
+        </ApolloProvider>
+      </WebhookStoreUrlContext.Provider>
+    </Auth0Provider>
   );
 }

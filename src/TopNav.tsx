@@ -1,6 +1,7 @@
 import NavBar from "@pluralsight/ps-design-system-navbar";
 import NavBrand from "@pluralsight/ps-design-system-navbrand";
 import React from "react";
+import { UserOrLogin } from "./Login/UserOrLogin";
 import { RedirectUrlInput } from "./RedirectUrl/RedirectUrl.component";
 import { WebhookStoreUrlInput } from "./WebhookStoreUrl/WebhookStoreUrl.component";
 
@@ -43,6 +44,7 @@ export function SkillsTopNav() {
           <WebhookStoreUrlInput key={"WebhookStoreUrlInput"} />,
           <RedirectUrlInput key={"RedirectUrlInput"} />,
         ]}
+        user={<UserOrLogin />}
       />
     </div>
   );
