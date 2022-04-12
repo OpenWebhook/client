@@ -35,7 +35,7 @@ function SkillsBranding(props: any) {
   return <NavBrand {...props} logo={<SkillsLogo />} wordmark="Open Webhook" />;
 }
 
-export function SkillsTopNav() {
+export default function TopNav() {
   return (
     <div>
       <NavBar

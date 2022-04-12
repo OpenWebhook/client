@@ -1,12 +1,17 @@
 import "@pluralsight/ps-design-system-normalize";
 
-import React from "react";
+import React, { Suspense } from "react";
 
-import AppFrame from "@pluralsight/ps-design-system-appframe";
+const AppFrame = React.lazy(
+  () => import("@pluralsight/ps-design-system-appframe")
+);
+const SkillsTopNav = React.lazy(() => import("./TopNav"));
 import * as core from "@pluralsight/ps-design-system-core";
 import Theme from "@pluralsight/ps-design-system-theme";
-import { SkillsTopNav } from "./TopNav";
-import WebhookList from "./WebhookDisplay/WebhookList.component";
+
+const WebhookList = React.lazy(
+  () => import("./WebhookDisplay/WebhookList.component")
+);
 import { ApolloProvider } from "@apollo/client";
 import { RedirectUrlContext } from "./RedirectUrl/RedirectUrl.context";
 import { WebhookStoreUrlContext } from "./WebhookStoreUrl/WebhookStoreUrl.context";
@@ -47,15 +52,17 @@ export default function App() {
                 setValue: setRedirectUrl,
               }}
             >
-              <AppFrame
-                topnav={() => {
-                  return <SkillsTopNav />;
-                }}
-              >
-                <div style={{ background: core.colorsBlack }}>
-                  <WebhookList />
-                </div>
-              </AppFrame>
+              <Suspense fallback={<div>Loading...</div>}>
+                <AppFrame
+                  topnav={() => {
+                    return <SkillsTopNav />;
+                  }}
+                >
+                  <div style={{ background: core.colorsBlack }}>
+                    <WebhookList />
+                  </div>
+                </AppFrame>
+              </Suspense>
             </RedirectUrlContext.Provider>
           </Theme>
         </ApolloProvider>
