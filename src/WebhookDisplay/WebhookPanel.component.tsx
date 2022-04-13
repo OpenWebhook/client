@@ -49,13 +49,17 @@ export const WebhookPanel: React.FC<{
         <P>{webhookResponse.code}</P>
         <P>{webhookResponse.error}</P>
         <div className="outline">
-          {Object.keys(JSON.parse(webhook.body)).map(function (key, i) {
-            return (
-              <P key={`webhookElement${i}`}>
-                {key}: {typeof JSON.parse(webhook.body)[key]}
-              </P>
-            );
-          })}
+          {webhook.body &&
+            Object.keys(JSON.parse(webhook.body || "{}")).map(function (
+              key,
+              i
+            ) {
+              return (
+                <P key={`webhookElement${i}`}>
+                  {key}: {typeof JSON.parse(webhook.body)[key]}
+                </P>
+              );
+            })}
         </div>
       </PageHeadingLayout>
     </PageWidthLayout>
