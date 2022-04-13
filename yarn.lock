@@ -1602,6 +1602,18 @@
   dependencies:
     "@pluralsight/ps-design-system-util" "^10.1.3"
 
+"@pluralsight/ps-design-system-dropdown@^13.1.1":
+  version "13.1.1"
+  resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-dropdown/-/ps-design-system-dropdown-13.1.1.tgz#c61ee93770798908cc9e9a968eb621da81aa3644"
+  integrity sha512-VMC6ac/3keionfbWIxcWnszQaHjbPYtk52y4DMdDGxSYgLIrXzqtFHmZcfOfTk5JxZlH0dPjhUFLw/aelF1sPA==
+  dependencies:
+    "@pluralsight/ps-design-system-core" "^10.0.4"
+    "@pluralsight/ps-design-system-halo" "^12.0.8"
+    "@pluralsight/ps-design-system-icon" "^25.4.0"
+    "@pluralsight/ps-design-system-screenreaderonly" "^5.0.11"
+    "@pluralsight/ps-design-system-util" "^10.1.3"
+    react-innertext "^1.1.5"
+
 "@pluralsight/ps-design-system-emptystate@^14.1.1":
   version "14.1.1"
   resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-emptystate/-/ps-design-system-emptystate-14.1.1.tgz#f88842d74e425464de704710258ee00ba7e2dcc7"
@@ -1697,6 +1709,14 @@
   dependencies:
     "@pluralsight/ps-design-system-core" "^10.0.4"
     normalize.css "^8.0.1"
+
+"@pluralsight/ps-design-system-screenreaderonly@^5.0.11":
+  version "5.0.11"
+  resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-screenreaderonly/-/ps-design-system-screenreaderonly-5.0.11.tgz#b3c06a878b35350e75e8e455eaa072473fd67a48"
+  integrity sha512-fU49XpAhCIxI+3mud8te1grtArJnq2VfCfJ5YZo2hUhTPUEm4a+SwYhVF11UqyrgoZI9u5t2/H8b80uP9iXQ2w==
+  dependencies:
+    "@pluralsight/ps-design-system-core" "^10.0.4"
+    "@pluralsight/ps-design-system-util" "^10.1.3"
 
 "@pluralsight/ps-design-system-scrollable@^6.0.11":
   version "6.0.11"
@@ -8980,6 +9000,11 @@ react-helmet-async@^1.0.7:
     prop-types "^15.7.2"
     react-fast-compare "^3.2.0"
     shallowequal "^1.1.0"
+
+react-innertext@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/react-innertext/-/react-innertext-1.1.5.tgz#8147ac54db3f7067d95f49e2d2c05a720d27d8d0"
+  integrity sha512-PWAqdqhxhHIv80dT9znP2KvS+hfkbRovFp4zFYHFFlOoQLRiawIic81gKb3U1wEyJZgMwgs3JoLtwryASRWP3Q==
 
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"

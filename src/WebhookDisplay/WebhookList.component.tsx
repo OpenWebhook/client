@@ -3,7 +3,13 @@ import { gql, useQuery } from "@apollo/client";
 import Emptystate from "./EmptyState.component";
 import { WebhookPage } from "./WebhookPage.component";
 
-import { Column, useTable } from "react-table";
+import {
+  Column,
+  TableState,
+  usePagination,
+  UsePaginationState,
+  useTable,
+} from "react-table";
 
 const largePayloadCellStyle: React.CSSProperties = {
   width: 500,
@@ -22,7 +28,7 @@ export type Webhook = {
 
 const QUERY_WEBHOOKS = gql`
   query Webhooks {
-    webhooks {
+    webhooks(first: 10) {
       id
       path
       body
@@ -103,7 +109,18 @@ const WebhookList: React.FC = () => {
       });
     }, [data]) || [];
 
-  const table = useTable<Webhook>({ columns, data: orderedWebhooks });
+  const initialState: UsePaginationState<Webhook> = {
+    pageSize: 1,
+    pageIndex: 1,
+  };
+  const table = useTable<Webhook>(
+    {
+      columns,
+      data: orderedWebhooks,
+      initialState,
+    }
+    // usePagination
+  );
 
   return orderedWebhooks && orderedWebhooks.length > 0 ? (
     <WebhookPage webhooks={orderedWebhooks} table={table} />
