@@ -1,0 +1,1 @@
+var l={xXXSmall:"xxxsmall",xXSmall:"xxsmall",xSmall:"xsmall",small:"small",medium:"medium",large:"large",xLarge:"xlarge"},a={xSmall:"xsmall",small:"small",medium:"medium",large:"large"},m={small:"small",medium:"medium",large:"large"},e={primary:"primary",secondary:"secondary"};export{l as h,a as l,m as p,e as t};
