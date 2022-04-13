@@ -28,7 +28,7 @@ export type Webhook = {
 
 const QUERY_WEBHOOKS = gql`
   query Webhooks {
-    webhooks(first: 10) {
+    webhooks(first: 1000) {
       id
       path
       body
@@ -99,27 +99,30 @@ const WebhookList: React.FC = () => {
         style: largePayloadCellStyle,
       },
     ],
-    []
+    [data]
   );
 
-  const orderedWebhooks =
-    useMemo(() => {
-      return data?.webhooks?.slice().sort((a, b) => {
+  const orderedWebhooks = useMemo(() => {
+    return (
+      data?.webhooks?.slice().sort((a, b) => {
         return Number(b.id) - Number(a.id);
-      });
-    }, [data]) || [];
+      }) || []
+    );
+  }, [data]);
 
   const initialState: UsePaginationState<Webhook> = {
-    pageSize: 1,
-    pageIndex: 1,
+    pageSize: 10,
+    pageIndex: 0,
   };
-  const table = useTable<Webhook>(
+
+  const table = useTable(
     {
       columns,
       data: orderedWebhooks,
+      // @ts-ignore
       initialState,
-    }
-    // usePagination
+    },
+    usePagination
   );
 
   return orderedWebhooks && orderedWebhooks.length > 0 ? (

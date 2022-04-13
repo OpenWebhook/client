@@ -1,7 +1,7 @@
 import { AsideLayout } from "@pluralsight/ps-design-system-layout";
 import React, { useState } from "react";
 import { TableInstance } from "react-table";
-import { FlexContainer, Paginator } from "./Paginator.compoent";
+import { FlexContainer, Paginator } from "./Paginator.component";
 import { Webhook } from "./WebhookList.component";
 import { WebhookPanel } from "./WebhookPanel.component";
 import { WebhookTable } from "./WebhookTable.component";
@@ -29,7 +29,7 @@ export const WebhookPage: React.FC<{
               table={table}
             />
             <FlexContainer>
-              <Paginator table={table} />{" "}
+              <Paginator table={table} />
             </FlexContainer>
           </div>
         </AsideLayout.Main>

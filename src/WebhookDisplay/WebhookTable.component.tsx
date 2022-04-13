@@ -55,7 +55,7 @@ export const WebhookTable: React.FC<{
       </Table.Head>
 
       <Table.Body {...table.getTableBodyProps}>
-        {table.rows
+        {table.page
           .map((row) => {
             table.prepareRow(row);
             return row;
