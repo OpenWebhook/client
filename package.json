@@ -1,14 +1,14 @@
 {
   "name": "vite-react-ts-starter",
   "version": "0.0.0",
-  "homepage": "https://webhooksarefun.github.io/client/",
+  "homepage": "https://www.openwebhook.io",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "jest",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "cp CNAME ./dist/CNAME && gh-pages -d dist"
   },
   "dependencies": {
     "@apollo/client": "^3.5.10",
