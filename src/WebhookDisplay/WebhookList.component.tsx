@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import { gql, useQuery } from "@apollo/client";
 import Emptystate from "./EmptyState.component";
 import { WebhookPage } from "./WebhookPage.component";
@@ -10,6 +10,8 @@ import {
   UsePaginationState,
   useTable,
 } from "react-table";
+import { forwardWebhookToLocalhost } from "../forward-to-localhost";
+import { RedirectUrlContext } from "../RedirectUrl/RedirectUrl.context";
 
 const largePayloadCellStyle: React.CSSProperties = {
   width: 500,
@@ -53,17 +55,24 @@ const COMMENTS_SUBSCRIPTION = gql`
 `;
 
 type SubscriptionWebhook = {
-  webhookAdded: Array<Webhook>;
+  webhookAdded: Webhook;
 };
 
 const WebhookList: React.FC = () => {
   const { data, subscribeToMore } = useQuery<QueryWebhook>(QUERY_WEBHOOKS);
+  const { value: baseUrl } = useContext(RedirectUrlContext);
+
   useEffect(() => {
     const unsuscribe = subscribeToMore<SubscriptionWebhook>({
       document: COMMENTS_SUBSCRIPTION,
       updateQuery: (prev, { subscriptionData }): QueryWebhook => {
         if (!subscriptionData.data) return prev;
         const newWebhook = subscriptionData.data.webhookAdded;
+        try {
+          void forwardWebhookToLocalhost(baseUrl, newWebhook);
+        } catch (err) {
+          console.error(err);
+        }
         return Object.assign({}, prev, {
           webhooks: [newWebhook, ...prev.webhooks],
         });
