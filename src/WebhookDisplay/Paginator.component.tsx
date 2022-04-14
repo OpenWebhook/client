@@ -7,6 +7,7 @@ import {
 } from "@pluralsight/ps-design-system-icon";
 import { P } from "@pluralsight/ps-design-system-text";
 import React from "react";
+import { TableInstance } from "react-table";
 import { Webhook } from "./WebhookList.component";
 
 export interface PaginatorProps {
@@ -27,9 +28,12 @@ const HorzSpacer: React.FC = (props) => (
 
 export const Paginator: React.FC<PaginatorProps> = (props) => {
   const { perPageOptions = [2, 5, 10], table } = props;
+  // @ts-ignore
   const { pageIndex, pageSize } = table.state;
 
+  // @ts-ignore
   const handlePrevPage = () => table.previousPage();
+  // @ts-ignore
   const handleNextPage = () => table.nextPage();
 
   const total = table.rows.length;
@@ -40,6 +44,7 @@ export const Paginator: React.FC<PaginatorProps> = (props) => {
     <div style={{ display: "flex", marginBottom: layout.spacingMedium }}>
       <Button
         appearance="secondary"
+        // @ts-ignore
         disabled={!table.canPreviousPage}
         icon={<CaretLeftIcon />}
         onClick={handlePrevPage}
@@ -48,6 +53,7 @@ export const Paginator: React.FC<PaginatorProps> = (props) => {
       <HorzSpacer />
       <Button
         appearance="secondary"
+        // @ts-ignore
         disabled={!table.canNextPage}
         icon={<CaretRightIcon />}
         onClick={handleNextPage}
@@ -66,6 +72,7 @@ export const Paginator: React.FC<PaginatorProps> = (props) => {
       <Dropdown
         appearance="subtle"
         onChange={(_evt, value) => {
+          //@ts-ignore
           table.setPageSize(Number(value));
         }}
         menu={

@@ -55,27 +55,38 @@ export const WebhookTable: React.FC<{
       </Table.Head>
 
       <Table.Body {...table.getTableBodyProps}>
-        {table.page
-          .map((row) => {
-            table.prepareRow(row);
-            return row;
-          })
-          .map((row, i) => (
-            <Table.Row
-              {...row.getRowProps()}
-              key={`webhookRow${row.id}`}
-              onClick={() => {
-                setSelectedRow(i);
-              }}
-            >
-              {row.cells.map((cell) => (
-                // @ts-ignore
-                <Table.Cell {...cell.getCellProps()} style={cell.column.style}>
-                  {cell.render("Cell")}
-                </Table.Cell>
-              ))}
-            </Table.Row>
-          ))}
+        {
+          //@ts-ignore
+          table.page
+            //@ts-ignore
+            .map((row) => {
+              table.prepareRow(row);
+              return row;
+            })
+            //@ts-ignore
+            .map((row, i) => (
+              <Table.Row
+                {...row.getRowProps()}
+                key={`webhookRow${row.id}`}
+                onClick={() => {
+                  setSelectedRow(i);
+                }}
+              >
+                {
+                  //@ts-ignore
+                  row.cells.map((cell) => (
+                    // @ts-ignore
+                    <Table.Cell
+                      {...cell.getCellProps()}
+                      style={cell.column.style}
+                    >
+                      {cell.render("Cell")}
+                    </Table.Cell>
+                  ))
+                }
+              </Table.Row>
+            ))
+        }
       </Table.Body>
     </Table>
   );
