@@ -11,7 +11,7 @@ export function WebhookStoreUrlInput() {
         size={Label.sizes.xSmall}
         style={{ marginRight: "8px", marginLeft: "8px" }}
       >
-        Webhook Store URL:
+        Webhook Store URL 😇:
       </Label>
       <TextInput
         appearance={TextInput.appearances.subtle}
