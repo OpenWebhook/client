@@ -29,9 +29,9 @@ const HorzSpacer: React.FC = (props) => (
 
 export const WebhookTable: React.FC<{
   webhooks: Webhook[];
-  setSelectedRow: (webhookIndex: number) => void;
+  setSelectedWebhook: (webhook: Webhook) => void;
   table: TableInstance<Webhook>;
-}> = ({ table, setSelectedRow }) => {
+}> = ({ table, setSelectedWebhook }) => {
   return (
     <Table scrollable>
       <Table.Head>
@@ -67,9 +67,9 @@ export const WebhookTable: React.FC<{
             .map((row, i) => (
               <Table.Row
                 {...row.getRowProps()}
-                key={`webhookRow${row.id}`}
+                key={`webhookRow${row.original.id}`}
                 onClick={() => {
-                  setSelectedRow(i);
+                  setSelectedWebhook(row.original);
                 }}
               >
                 {

@@ -10,13 +10,13 @@ export const WebhookPage: React.FC<{
   webhooks: Webhook[];
   table: TableInstance<Webhook>;
 }> = ({ webhooks, table }) => {
-  const [selectedRow, setSelectedRow] = useState(0);
+  const [selectedWebhook, setSelectedWebhook] = useState(webhooks[0]);
 
   return (
     <AsideLayout
       aside={
         <AsideLayout.Aside>
-          <WebhookPanel webhook={webhooks[selectedRow]} />
+          <WebhookPanel webhook={selectedWebhook} />
         </AsideLayout.Aside>
       }
       asidePosition={AsideLayout.asidePositions.last}
@@ -25,7 +25,7 @@ export const WebhookPage: React.FC<{
           <div style={{ height: "calc(100vh - 48px)" }}>
             <WebhookTable
               webhooks={webhooks}
-              setSelectedRow={setSelectedRow}
+              setSelectedWebhook={setSelectedWebhook}
               table={table}
             />
             <FlexContainer>
