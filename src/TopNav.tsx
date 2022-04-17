@@ -12,11 +12,11 @@ function SkillsLogo() {
       viewBox="0 0 32 32"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g fill="none" fill-rule="evenodd">
+      <g fill="none" fillRule="evenodd">
         <defs>
           <linearGradient id="Gradient" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0%" stop-color="#23F0C7" />
-            <stop offset="100%" stop-color="#5C8001" />
+            <stop offset="0%" stopColor="#23F0C7" />
+            <stop offset="100%" stopColor="#5C8001" />
           </linearGradient>
         </defs>
         <path
