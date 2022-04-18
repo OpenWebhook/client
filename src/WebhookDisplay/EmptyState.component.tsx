@@ -10,9 +10,7 @@ const Emptystate = () => (
     }
     caption={
       <EmptyState.Caption>
-        Hedwig Daily Prophet treacle tart full-moon Ollivanders You-Know-Who
-        cursed. Fawkes maze raw-steak Voldemort Goblin Wars snitch Forbidden
-        forest grindylows wool socks.
+        Make sure your Webhook Store has the latest version.
       </EmptyState.Caption>
     }
     illustration={
