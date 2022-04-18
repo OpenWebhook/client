@@ -7,8 +7,8 @@
     "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "jest",
-    "predeploy": "yarn build",
-    "deploy": "cp CNAME ./dist/CNAME && gh-pages -d dist"
+    "predeploy": "yarn build && cp CNAME ./dist/CNAME",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@apollo/client": "^3.5.10",
