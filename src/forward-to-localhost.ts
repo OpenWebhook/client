@@ -1,4 +1,3 @@
-import { hasPropertyStatus } from "./helpers/type-checkers";
 import { Webhook } from "./WebhookDisplay/WebhookList.component";
 
 export const forwardWebhookToLocalhost = async (
@@ -13,18 +12,18 @@ export const forwardWebhookToLocalhost = async (
       webhook.body
     );
     console.log(res);
+    console.log("It is done");
     setWebhookResponse && setWebhookResponse({ code: "sent" });
-  } catch (err: unknown) {
-    console.log(err);
-    const errStatus = hasPropertyStatus(err) ? err.status : null;
+  } catch (err) {
+    console.error(err);
+    console.log("It is err");
 
-    setWebhookResponse &&
-      setWebhookResponse({ error: `Error code: ${errStatus}` || "Has error" });
+    setWebhookResponse && setWebhookResponse({ err: err });
   }
 };
 
 const UNSAFE_HEADERS_REGEXP =
-  /^(?:host|origin|cookie|user-agent|content-length|version|referer|sec-ch-ua|connection|sec-fetch-dest|sec-fetch-mode|sec-fetch-site|accept-encoding|sec-ch-ua-mobile|sec-ch-ua-platform|via)$/i;
+  /^(?:host|origin|cookie|user-agent|content-length|version|referer|sec-ch-ua|connection|sec-fetch-dest|sec-fetch-mode|sec-fetch-site|accept-encoding|sec-ch-ua-mobile|sec-ch-ua-platform)$/i;
 
 function sendXhrRequest(
   url: string,
