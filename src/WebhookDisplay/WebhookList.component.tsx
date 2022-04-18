@@ -26,6 +26,7 @@ export type Webhook = {
   path: string;
   body: string;
   headers: string;
+  receivedAt: string;
 };
 
 const QUERY_WEBHOOKS = gql`
@@ -35,6 +36,7 @@ const QUERY_WEBHOOKS = gql`
       path
       body
       headers
+      receivedAt
     }
   }
 `;
@@ -50,6 +52,7 @@ const COMMENTS_SUBSCRIPTION = gql`
       path
       body
       headers
+      receivedAt
     }
   }
 `;
@@ -102,10 +105,10 @@ const WebhookList: React.FC = () => {
         style: largePayloadCellStyle,
       },
       {
-        Header: "Headers",
-        accessor: (webhook: Webhook) => webhook.headers,
-        title: "Headers",
-        style: largePayloadCellStyle,
+        Header: "Received at",
+        accessor: (webhook: Webhook) =>
+          new Date(webhook.receivedAt).toLocaleString(),
+        title: "Received at",
       },
     ],
     [data]
