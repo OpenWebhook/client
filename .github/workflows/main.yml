@@ -15,4 +15,8 @@ jobs:
           node-version: 16
           cache: "yarn"
       - run: yarn
-      - run: yarn deploy
+      - run: yarn predeploy
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
