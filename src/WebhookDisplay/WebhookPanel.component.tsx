@@ -6,8 +6,10 @@ import {
 } from "@pluralsight/ps-design-system-layout";
 import { Heading, P } from "@pluralsight/ps-design-system-text";
 import React, { useContext, useState } from "react";
+import { Code } from "../Code";
 import { forwardWebhookToLocalhost } from "../forward-to-localhost";
 import { RedirectUrlContext } from "../RedirectUrl/RedirectUrl.context";
+import { FlexContainer } from "./Paginator.component";
 import { Webhook } from "./WebhookList.component";
 
 export const WebhookPanel: React.FC<{
@@ -38,29 +40,27 @@ export const WebhookPanel: React.FC<{
           </Heading>
         }
       >
-        <Button
-          key="forwardWebhookToLocalhost"
-          onClick={() => {
-            forwardWebhookToLocalhost(baseUrl, webhook, setWebhookResponse);
-          }}
-        >
-          Send
-        </Button>
-        <P>{webhookResponse.code}</P>
-        <P>{webhookResponse.error}</P>
-        <div className="outline">
-          {webhook.body &&
-            Object.keys(JSON.parse(webhook.body || "{}")).map(function (
-              key,
-              i
-            ) {
-              return (
-                <P key={`webhookElement${i}`}>
-                  {key}: {typeof JSON.parse(webhook.body)[key]}
-                </P>
-              );
-            })}
-        </div>
+        <FlexContainer>
+          <Button
+            key="forwardWebhookToLocalhost"
+            onClick={() => {
+              forwardWebhookToLocalhost(baseUrl, webhook, setWebhookResponse);
+            }}
+          >
+            Send
+          </Button>
+          <P style={{ margin: 0, padding: `0 ${layout.spacingXSmall}` }}>
+            {webhookResponse.code}
+          </P>
+          <P style={{ margin: 0, padding: `0 ${layout.spacingXSmall}` }}>
+            {webhookResponse.error}
+          </P>
+        </FlexContainer>
+
+        <P>Headers</P>
+        <Code code={webhook.headers} language="js" />
+        <P>Body</P>
+        <Code code={webhook.body} language="js" />
       </PageHeadingLayout>
     </PageWidthLayout>
   );
