@@ -5,7 +5,6 @@ import { WebhookPage } from "./WebhookPage.component";
 
 import {
   Column,
-  TableState,
   usePagination,
   UsePaginationState,
   useTable,
@@ -14,8 +13,8 @@ import { forwardWebhookToLocalhost } from "../forward-to-localhost";
 import { RedirectUrlContext } from "../RedirectUrl/RedirectUrl.context";
 
 const largePayloadCellStyle: React.CSSProperties = {
-  width: 500,
-  maxWidth: 500,
+  width: 300,
+  maxWidth: 300,
   overflow: "hidden",
   textOverflow: "ellipsis",
   whiteSpace: "nowrap",
@@ -123,7 +122,7 @@ const WebhookList: React.FC = () => {
   }, [data]);
 
   const initialState: UsePaginationState<Webhook> = {
-    pageSize: 10,
+    pageSize: 15,
     pageIndex: 0,
   };
 

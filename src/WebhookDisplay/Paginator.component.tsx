@@ -16,7 +16,10 @@ export interface PaginatorProps {
 }
 
 export const FlexContainer: React.FC = (props) => (
-  <div style={{ display: "flex", alignItems: "center" }} {...props} />
+  <div
+    style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+    {...props}
+  />
 );
 
 const HorzSpacer: React.FC = (props) => (
@@ -27,7 +30,7 @@ const HorzSpacer: React.FC = (props) => (
 );
 
 export const Paginator: React.FC<PaginatorProps> = (props) => {
-  const { perPageOptions = [2, 5, 10], table } = props;
+  const { perPageOptions = [2, 5, 10, 15], table } = props;
   // @ts-ignore
   const { pageIndex, pageSize } = table.state;
 
@@ -41,7 +44,12 @@ export const Paginator: React.FC<PaginatorProps> = (props) => {
   const cursorEnd = Math.min(cursorStart + pageSize - 1, total);
 
   return (
-    <div style={{ display: "flex", marginBottom: layout.spacingMedium }}>
+    <div
+      style={{
+        display: "flex",
+        marginBottom: layout.spacingMedium,
+      }}
+    >
       <Button
         appearance="secondary"
         // @ts-ignore

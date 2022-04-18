@@ -40,7 +40,7 @@ export const WebhookPanel: React.FC<{
           </Heading>
         }
       >
-        <FlexContainer>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <Button
             key="forwardWebhookToLocalhost"
             onClick={() => {
@@ -55,7 +55,7 @@ export const WebhookPanel: React.FC<{
           <P style={{ margin: 0, padding: `0 ${layout.spacingXSmall}` }}>
             {webhookResponse.error}
           </P>
-        </FlexContainer>
+        </div>
 
         <P>Headers</P>
         <Code code={webhook.headers} language="js" />

@@ -1,4 +1,7 @@
-import { AsideLayout } from "@pluralsight/ps-design-system-layout";
+import {
+  AsideLayout,
+  EqualColumnLayout,
+} from "@pluralsight/ps-design-system-layout";
 import React, { useState } from "react";
 import { TableInstance } from "react-table";
 import { FlexContainer, Paginator } from "./Paginator.component";
@@ -13,27 +16,18 @@ export const WebhookPage: React.FC<{
   const [selectedWebhook, setSelectedWebhook] = useState(webhooks[0]);
 
   return (
-    <AsideLayout
-      aside={
-        <AsideLayout.Aside>
-          <WebhookPanel webhook={selectedWebhook} />
-        </AsideLayout.Aside>
-      }
-      asidePosition={AsideLayout.asidePositions.last}
-      main={
-        <AsideLayout.Main>
-          <div style={{ height: "calc(100vh - 48px)" }}>
-            <WebhookTable
-              webhooks={webhooks}
-              setSelectedWebhook={setSelectedWebhook}
-              table={table}
-            />
-            <FlexContainer>
-              <Paginator table={table} />
-            </FlexContainer>
-          </div>
-        </AsideLayout.Main>
-      }
-    />
+    <EqualColumnLayout count={EqualColumnLayout.counts.two}>
+      <div style={{ height: "calc(100vh - 48px)" }}>
+        <WebhookTable
+          webhooks={webhooks}
+          setSelectedWebhook={setSelectedWebhook}
+          table={table}
+        />
+        <FlexContainer>
+          <Paginator table={table} />
+        </FlexContainer>
+      </div>
+      <WebhookPanel webhook={selectedWebhook} />
+    </EqualColumnLayout>
   );
 };

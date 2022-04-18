@@ -12,7 +12,7 @@ export const Code: React.FC<{ code: any; language: string }> = ({
 
   const codeWithCariage = JSON.stringify(JSON.parse(code), null, 2);
   return (
-    <div className="Code">
+    <div className="Code" style={{ width: "600px" }}>
       <pre>
         <code className={`language-${language}`}>{codeWithCariage}</code>
       </pre>
