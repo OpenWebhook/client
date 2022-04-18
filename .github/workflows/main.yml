@@ -1,24 +1,18 @@
-name: CI
+name: Main
 
 on:
   push:
     branches:
       - main
-  pull_request:
-
 jobs:
-  build-lint-test:
+  deploy:
     runs-on: 'ubuntu-latest'
-
-    strategy:
-      matrix:
-        node: [16]
 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 16
           cache: "yarn"
       - run: yarn
-      - run: yarn build
+      - run: yarn deploy
