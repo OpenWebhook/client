@@ -2,6 +2,7 @@
   "name": "vite-react-ts-starter",
   "version": "0.0.0",
   "homepage": "https://www.openwebhook.io",
+  "license": "GPL-3.0-or-later",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -58,6 +59,5 @@
     "ts-jest": "^27.1.4",
     "typescript": "^4.6.3",
     "vite": "^2.9.1"
-  },
-  "license": "MIT"
+  }
 }
