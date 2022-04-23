@@ -7,6 +7,9 @@ on:
 jobs:
   deploy:
     runs-on: 'ubuntu-latest'
+    environment: github-pages
+    env:
+      VITE_HONEYBADGER_API_KEY: ${{ secrets.HONEYBADGER_API_KEY }}
 
     steps:
       - uses: actions/checkout@v2
@@ -20,3 +23,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+      - uses: honeybadger-io/github-notify-deploy-action@v1
+        with:
+          api_key: ${{ secrets.HONEYBADGER_API_KEY }}
