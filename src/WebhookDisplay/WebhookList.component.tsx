@@ -83,7 +83,7 @@ const WebhookList: React.FC = () => {
     return () => {
       unsuscribe();
     };
-  }, []);
+  }, [subscribeToMore]);
 
   const columns = React.useMemo<Column<Webhook>[]>(
     () => [
