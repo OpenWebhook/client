@@ -27,7 +27,11 @@ export const WebhookPanel: React.FC<{
   return (
     <PageWidthLayout
       key={"PageWidthLayout"}
-      style={{ padding: `0 ${layout.spacingXSmall}` }}
+      style={{
+        padding: `0 ${layout.spacingXSmall}`,
+        height: "calc(100vh - 48px)",
+        overflow: "scroll",
+      }}
     >
       <PageHeadingLayout
         key={"PageHeadingLayout"}
@@ -55,12 +59,11 @@ export const WebhookPanel: React.FC<{
             {webhookResponse.error}
           </P>
         </div>
-
-        <P>Headers</P>
-        <Code code={webhook.headers} language="js" />
-        <P>Body</P>
-        <Code code={webhook.body} language="js" />
       </PageHeadingLayout>
+      <P>Headers</P>
+      <Code code={webhook.headers} language="js" />
+      <P>Body</P>
+      <Code code={webhook.body} language="js" />
     </PageWidthLayout>
   );
 };
