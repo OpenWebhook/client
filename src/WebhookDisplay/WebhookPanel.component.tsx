@@ -9,7 +9,6 @@ import React, { useContext, useState } from "react";
 import { Code } from "../Code";
 import { forwardWebhookToLocalhost } from "../forward-to-localhost";
 import { RedirectUrlContext } from "../RedirectUrl/RedirectUrl.context";
-import { FlexContainer } from "./Paginator.component";
 import { Webhook } from "./WebhookList.component";
 
 export const WebhookPanel: React.FC<{
