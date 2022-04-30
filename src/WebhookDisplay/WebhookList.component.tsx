@@ -30,7 +30,7 @@ export type Webhook = {
 
 const QUERY_WEBHOOKS = gql`
   query Webhooks {
-    webhooks(first: 1000) {
+    webhooks(first: 100) {
       id
       path
       body
