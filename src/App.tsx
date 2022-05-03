@@ -28,9 +28,14 @@ export default function App() {
     isValidHttpUrl
   );
 
+  const defaultWebhookStoreUrl =
+    window.location.hostname === "www.openwebhook.io"
+      ? "https://webhook-store.herokuapp.com"
+      : window.location.origin;
+
   const [webhookStoreUrl, setWebhooksStoreUrl] = useStateInLocalStorage(
     "webhookStoreUrl",
-    "https://webhook-store.herokuapp.com",
+    defaultWebhookStoreUrl,
     isValidHttpUrl
   );
 
