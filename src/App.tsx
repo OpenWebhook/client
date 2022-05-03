@@ -17,18 +17,26 @@ import { RedirectUrlContext } from "./RedirectUrl/RedirectUrl.context";
 import { WebhookStoreUrlContext } from "./WebhookStoreUrl/WebhookStoreUrl.context";
 import { createApolloClient } from "./apollo.client";
 import { useStateInLocalStorage } from "./use-state-with-local-storage.hook";
+import { isValidHttpUrl } from "./utils/is-valid-url";
 
 // https://coolors.co/23f0c7-fb6107-f3de2c-5c8001-fbb02d
 
 export default function App() {
   const [redirectUrl, setRedirectUrl] = useStateInLocalStorage(
     "redirectUrl",
-    "http://localhost:8010/proxy"
+    "http://localhost:8010/proxy",
+    isValidHttpUrl
   );
+
+  const defaultWebhookStoreUrl =
+    window.location.hostname === "www.openwebhook.io"
+      ? "https://webhook-store.herokuapp.com"
+      : window.location.origin;
 
   const [webhookStoreUrl, setWebhooksStoreUrl] = useStateInLocalStorage(
     "webhookStoreUrl",
-    "https://webhook-store.herokuapp.com"
+    defaultWebhookStoreUrl,
+    isValidHttpUrl
   );
 
   return (
