@@ -15,10 +15,6 @@ posthog.init(import.meta.env.VITE_POSTHOG_API_KEY as string, {
   api_host: "https://app.posthog.com",
 });
 
-posthog.capture("my event", { property: "value" });
-posthog.capture("my event 2", { property: "value2" });
-posthog.capture("my event 3", { property: "value3" });
-
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
