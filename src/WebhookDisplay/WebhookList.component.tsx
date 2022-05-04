@@ -11,6 +11,7 @@ import {
 } from "react-table";
 import { forwardWebhookToLocalhost } from "../forward-to-localhost";
 import { RedirectUrlContext } from "../RedirectUrl/RedirectUrl.context";
+import posthog from "posthog-js";
 
 const largePayloadCellStyle: React.CSSProperties = {
   width: 300,
@@ -75,6 +76,7 @@ const WebhookList: React.FC = () => {
         } catch (err) {
           console.error(err);
         }
+        posthog.capture("New webhook received", { webhookId: newWebhook.id });
         return Object.assign({}, prev, {
           webhooks: [newWebhook, ...prev.webhooks],
         });

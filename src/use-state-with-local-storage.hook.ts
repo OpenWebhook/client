@@ -1,3 +1,4 @@
+import posthog from "posthog-js";
 import { useState } from "react";
 
 export const useStateInLocalStorage = (
@@ -15,6 +16,9 @@ export const useStateInLocalStorage = (
     } else {
       console.warn("invalid new value, not stored");
     }
+    posthog.capture(`${localStorageKey} update attempt`, {
+      value: newValue,
+    });
   };
   return [value, setWebhookStoreURLInLocalStorage];
 };

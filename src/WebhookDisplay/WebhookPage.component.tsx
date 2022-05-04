@@ -1,7 +1,4 @@
-import {
-  AsideLayout,
-  EqualColumnLayout,
-} from "@pluralsight/ps-design-system-layout";
+import { EqualColumnLayout } from "@pluralsight/ps-design-system-layout";
 import React, { useState } from "react";
 import { TableInstance } from "react-table";
 import { FlexContainer, Paginator } from "./Paginator.component";
