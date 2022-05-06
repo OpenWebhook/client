@@ -15,7 +15,7 @@ export function WebhookStoreUrlInput() {
       </Label>
       <TextInput
         appearance={TextInput.appearances.subtle}
-        placeholder="webhook-store.herokuapp.com"
+        placeholder="https://webhook-store.herokuapp.com"
         size={TextInput.sizes.small}
         defaultValue={value}
         onBlur={(event) => {
