@@ -29,7 +29,7 @@ export default function App() {
   );
 
   const defaultWebhookStoreUrl =
-    window.location.hostname === "www.openwebhook.io"
+    window.location.hostname === "demo.openwebhook.io"
       ? "https://webhook-store.herokuapp.com"
       : window.location.origin;
 
