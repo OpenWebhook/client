@@ -13,8 +13,11 @@ export const WebhookPage: React.FC<{
   const [selectedWebhook, setSelectedWebhook] = useState(webhooks[0]);
 
   return (
-    <EqualColumnLayout count={EqualColumnLayout.counts.two}>
-      <div style={{ height: "calc(100vh - 48px)" }}>
+    <EqualColumnLayout
+      count={EqualColumnLayout.counts.two}
+      style={{ flexWrap: "nowrap" }}
+    >
+      <div style={{ height: "calc(100vh - 150px)" }}>
         <WebhookTable
           webhooks={webhooks}
           setSelectedWebhook={setSelectedWebhook}
