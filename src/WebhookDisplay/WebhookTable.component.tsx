@@ -1,7 +1,6 @@
 import { layout } from "@pluralsight/ps-design-system-core";
 import Table from "@pluralsight/ps-design-system-table";
 import React from "react";
-import Avatar from "@pluralsight/ps-design-system-avatar";
 import { Webhook } from "./WebhookList.component";
 import { HeaderGroup, TableInstance } from "react-table";
 

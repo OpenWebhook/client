@@ -30,7 +30,7 @@ const HorzSpacer: React.FC = (props) => (
 );
 
 export const Paginator: React.FC<PaginatorProps> = (props) => {
-  const { perPageOptions = [2, 5, 10, 15], table } = props;
+  const { perPageOptions = [2, 5, 10, 15, 50], table } = props;
   // @ts-ignore
   const { pageIndex, pageSize } = table.state;
 

@@ -4,6 +4,7 @@ import {
   PageHeadingLayout,
   PageWidthLayout,
 } from "@pluralsight/ps-design-system-layout";
+import Link from "@pluralsight/ps-design-system-link";
 import { Heading, P } from "@pluralsight/ps-design-system-text";
 import React, { useContext, useState } from "react";
 import { Code } from "../Code";
@@ -58,6 +59,17 @@ export const WebhookPanel: React.FC<{
           <P style={{ margin: 0, padding: `0 ${layout.spacingXSmall}` }}>
             {webhookResponse.error}
           </P>
+          {webhookResponse?.error && (
+            <Link>
+              <a
+                href={
+                  "https://docs.openwebhook.io/docs/troubleshoot-replay-webhook"
+                }
+              >
+                Trouble shoot CORS issue
+              </a>
+            </Link>
+          )}
         </div>
       </PageHeadingLayout>
       <P>Headers</P>

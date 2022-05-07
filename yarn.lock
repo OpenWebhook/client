@@ -1669,6 +1669,14 @@
     "@pluralsight/ps-design-system-text" "^20.1.27"
     "@pluralsight/ps-design-system-util" "^10.1.3"
 
+"@pluralsight/ps-design-system-link@^13.0.11":
+  version "13.0.11"
+  resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-link/-/ps-design-system-link-13.0.11.tgz#52b6da4ac0529ebe901eb500f876f4c6cd3feb32"
+  integrity sha512-r5P/VkhASM1MyZ857ai6y02rgzl3cx92OBl7SnZi+qiOZpSzNWpcA2feGjSdbTfQY0y86sLDCX8RbVsavg2M5w==
+  dependencies:
+    "@pluralsight/ps-design-system-core" "^10.0.4"
+    "@pluralsight/ps-design-system-util" "^10.1.3"
+
 "@pluralsight/ps-design-system-navbar@^6.1.1":
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-navbar/-/ps-design-system-navbar-6.1.1.tgz#387a5f460e43f26ee5b1eadb1a22436044b827ba"

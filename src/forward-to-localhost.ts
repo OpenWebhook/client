@@ -19,8 +19,7 @@ export const forwardWebhookToLocalhost = async (
       console.log(response.data);
     })
     .catch(function (error) {
-      setWebhookResponse &&
-        setWebhookResponse({ code: 500, error: error.toString() });
+      setWebhookResponse && setWebhookResponse({ error: error.toString() });
       console.error(error);
     });
 };

@@ -23,6 +23,7 @@
     "@pluralsight/ps-design-system-emptystate": "^14.1.1",
     "@pluralsight/ps-design-system-icon": "^25.4.0",
     "@pluralsight/ps-design-system-layout": "^12.0.14",
+    "@pluralsight/ps-design-system-link": "^13.0.11",
     "@pluralsight/ps-design-system-navbar": "^6.1.1",
     "@pluralsight/ps-design-system-navbrand": "^5.0.11",
     "@pluralsight/ps-design-system-navcookiebanner": "^4.1.1",
