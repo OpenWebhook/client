@@ -66,7 +66,7 @@ export const WebhookPanel: React.FC<{
                   "https://docs.openwebhook.io/docs/troubleshoot-replay-webhook"
                 }
               >
-                Trouble shoot CORS issue
+                Troubleshoot CORS issue
               </a>
             </Link>
           )}
