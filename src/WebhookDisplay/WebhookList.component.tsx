@@ -12,6 +12,7 @@ import {
 import { forwardWebhookToLocalhost } from "../forward-to-localhost";
 import { RedirectUrlContext } from "../RedirectUrl/RedirectUrl.context";
 import posthog from "posthog-js";
+import { WebhookStoreUrlContext } from "../WebhookStoreUrl/WebhookStoreUrl.context";
 
 const largePayloadCellStyle: React.CSSProperties = {
   width: 300,
@@ -64,6 +65,7 @@ type SubscriptionWebhook = {
 const WebhookList: React.FC = () => {
   const { data, subscribeToMore } = useQuery<QueryWebhook>(QUERY_WEBHOOKS);
   const { value: baseUrl } = useContext(RedirectUrlContext);
+  const { value: webhookStoreUrl } = useContext(WebhookStoreUrlContext);
 
   useEffect(() => {
     const unsuscribe = subscribeToMore<SubscriptionWebhook>({
@@ -141,7 +143,7 @@ const WebhookList: React.FC = () => {
   return orderedWebhooks && orderedWebhooks.length > 0 ? (
     <WebhookPage webhooks={orderedWebhooks} table={table} />
   ) : (
-    <Emptystate />
+    <Emptystate webhookStoreUrl={webhookStoreUrl} />
   );
 };
 
