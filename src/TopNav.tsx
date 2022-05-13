@@ -3,6 +3,7 @@ import NavBrand from "@pluralsight/ps-design-system-navbrand";
 import React from "react";
 import { RedirectUrlInput } from "./RedirectUrl/RedirectUrl.component";
 import { WebhookStoreUrlInput } from "./WebhookStoreUrl/WebhookStoreUrl.component";
+import GitHubButton from "react-github-btn";
 
 function SkillsLogo() {
   return (
@@ -70,6 +71,18 @@ export default function TopNav() {
           <WebhookStoreUrlInput key={"WebhookStoreUrlInput"} />,
           <RedirectUrlInput key={"RedirectUrlInput"} />,
         ]}
+        user={
+          <GitHubButton
+            href="https://github.com/OpenWebhook/webhook-store"
+            data-color-scheme="no-preference: dark_high_contrast; light: light_high_contrast; dark: dark_high_contrast;"
+            data-icon="octicon-star"
+            data-show-count="true"
+            aria-label="Star OpenWebhook/webhook-store on GitHub"
+            data-size="large"
+          >
+            Star
+          </GitHubButton>
+        }
       />
     </div>
   );
