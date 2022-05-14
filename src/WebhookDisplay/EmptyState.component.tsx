@@ -5,7 +5,7 @@ import Button from "@pluralsight/ps-design-system-button";
 const Emptystate = ({ webhookStoreUrl }: { webhookStoreUrl: string }) => {
   const curlCommand = useMemo(
     () =>
-      `POST ${webhookStoreUrl} -d 'name=Coucou' -d 'email=contact@openwebhook.io' --header "X-MyHeader: 123"`,
+      `curl -X POST ${webhookStoreUrl} -d 'name=Coucou' -d 'email=contact@openwebhook.io' --header "X-MyHeader: 123"`,
     [webhookStoreUrl]
   );
   return (
@@ -26,8 +26,9 @@ const Emptystate = ({ webhookStoreUrl }: { webhookStoreUrl: string }) => {
           <Button
             appearance={Button.appearances.stroke}
             onClick={() => {
-              navigator.clipboard.writeText(curlCommand);
-              alert("Copied " + curlCommand);
+              navigator.clipboard.writeText(curlCommand).then(() => {
+                alert("Copied " + curlCommand);
+              });
             }}
           >
             Copy curl
