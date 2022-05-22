@@ -1,6 +1,8 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { Webhook } from "./WebhookDisplay/WebhookList.component";
 
+let counter = 0;
+
 export const forwardWebhookToLocalhost = async (
   baseUrl: string,
   webhook: Webhook,
@@ -19,7 +21,14 @@ export const forwardWebhookToLocalhost = async (
       console.log(response.data);
     })
     .catch(function (error) {
+      if (error.code === "ERR_NETWORK" && counter < 3) {
+        counter += 1;
+        alert("A network error occurred:\n" + "Open the console to debug.");
+      }
       setWebhookResponse && setWebhookResponse({ error: error.toString() });
-      console.error(error);
+      console.error(
+        "Read documentation if you have cors issues https://www.openwebhook.io/docs/troubleshoot-replay-webhook/",
+        error
+      );
     });
 };
