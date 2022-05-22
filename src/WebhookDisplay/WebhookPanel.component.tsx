@@ -53,22 +53,26 @@ export const WebhookPanel: React.FC<{
           >
             Send
           </Button>
-          <P style={{ margin: 0, padding: `0 ${layout.spacingXSmall}` }}>
-            {webhookResponse.code}
-          </P>
-          <P style={{ margin: 0, padding: `0 ${layout.spacingXSmall}` }}>
-            {webhookResponse.error}
-          </P>
+          {webhookResponse?.code && (
+            <P style={{ margin: 0, padding: `0 ${layout.spacingXSmall}` }}>
+              Response code: {webhookResponse.code}
+            </P>
+          )}
           {webhookResponse?.error && (
-            <Link>
-              <a
-                href={
-                  "https://www.openwebhook.io/docs/troubleshoot-replay-webhook"
-                }
-              >
-                Troubleshoot CORS issue
-              </a>
-            </Link>
+            <>
+              <P style={{ margin: 0, padding: `0 ${layout.spacingXSmall}` }}>
+                {webhookResponse.error}
+              </P>
+              <Link>
+                <a
+                  href={
+                    "https://www.openwebhook.io/docs/troubleshoot-replay-webhook"
+                  }
+                >
+                  Troubleshoot CORS issue
+                </a>
+              </Link>
+            </>
           )}
         </div>
       </PageHeadingLayout>
