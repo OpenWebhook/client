@@ -19,7 +19,13 @@ export const forwardWebhookToLocalhost = async (
       console.log(response.data);
     })
     .catch(function (error) {
+      if (error.code === "ERR_NETWORK") {
+        alert("A network error occurred:\n" + "Open the console to debug.");
+      }
       setWebhookResponse && setWebhookResponse({ error: error.toString() });
-      console.error(error);
+      console.error(
+        "Read documentation if you have cors issues https://www.openwebhook.io/docs/troubleshoot-replay-webhook/",
+        error
+      );
     });
 };
