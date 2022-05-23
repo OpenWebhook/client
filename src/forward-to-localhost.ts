@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { Webhook } from "./WebhookDisplay/WebhookList.component";
 
-let counter = 0;
+let alertHasBeenDisplayed = 0;
 
 export const forwardWebhookToLocalhost = async (
   baseUrl: string,
@@ -25,13 +25,15 @@ export const forwardWebhookToLocalhost = async (
         "Read documentation if you have cors issues https://www.openwebhook.io/docs/troubleshoot-replay-webhook/",
         error
       );
+      setWebhookResponse && setWebhookResponse({ error: error.toString() });
       const userInitiatedRequest = setWebhookResponse;
       const shouldDisplayAlert =
-        error.code === "ERR_NETWORK" && counter < 3 && userInitiatedRequest;
+        error.code === "ERR_NETWORK" &&
+        alertHasBeenDisplayed < 3 &&
+        userInitiatedRequest;
       if (shouldDisplayAlert) {
-        counter += 1;
+        alertHasBeenDisplayed += 1;
         alert("A network error occurred:\n" + "Open the console to debug.");
       }
-      setWebhookResponse && setWebhookResponse({ error: error.toString() });
     });
 };
