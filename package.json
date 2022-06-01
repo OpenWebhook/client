@@ -12,7 +12,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "@apollo/client": "^3.6.1",
+    "@apollo/client": "^3.6.6",
     "@honeybadger-io/js": "^3.2.9",
     "@honeybadger-io/react": "^2.0.1",
     "@pluralsight/ps-design-system-appframe": "^6.1.1",
