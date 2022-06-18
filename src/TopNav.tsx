@@ -5,6 +5,7 @@ import { WebhookStoreUrlInput } from "./WebhookStoreUrl/WebhookStoreUrl.componen
 import GitHubButton from "react-github-btn";
 import NavItem from "@pluralsight/ps-design-system-navitem";
 import { ProxyStatus } from "./ProxyStatus/ProxyStatus.component";
+import { LoginOrDisplayUser } from "./User/LoginOrDisplayUser";
 
 function SkillsLogo() {
   return (
@@ -73,7 +74,7 @@ export default function TopNav() {
         </NavItem>,
         <ProxyStatus key={"ProxyStatus"} />,
       ]}
-      user={
+      utility={
         <NavItem key={"GitHubButton"}>
           <GitHubButton
             href="https://github.com/OpenWebhook/webhook-store"
@@ -87,6 +88,7 @@ export default function TopNav() {
           </GitHubButton>
         </NavItem>
       }
+      user={<LoginOrDisplayUser />}
     />
   );
 }
