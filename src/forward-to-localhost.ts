@@ -10,7 +10,7 @@ export const forwardWebhookToLocalhost = async (
 ): Promise<void> => {
   const options: AxiosRequestConfig = {
     method: "POST",
-    url: `${baseUrl}/${webhook.path}`,
+    url: `${baseUrl}${webhook.path}`,
     data: JSON.parse(webhook.body),
   };
 
