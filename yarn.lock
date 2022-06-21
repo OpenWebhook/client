@@ -1265,20 +1265,19 @@
   resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.1.1.tgz#076d78ce99822258cf813ecc1e7fa460fa74d052"
   integrity sha512-NQ17ii0rK1b34VZonlmT2QMJFI70m0TRwbknO/ihlbatXyaktDhN/98vBiUU6kNBPljqGqyIrl2T4nY2RpFANg==
 
-"@honeybadger-io/js@^3.2.8", "@honeybadger-io/js@^3.2.9":
-  version "3.2.9"
-  resolved "https://registry.yarnpkg.com/@honeybadger-io/js/-/js-3.2.9.tgz#01650ced68878771c5bd57b7d4849afdb4122953"
-  integrity sha512-ByaN4rouf9+nqPv87Ccny6/Fbs1gn2bVYFb8za/IgyYqR9OfgvzwY2/ddDjO57sgOCkHjBq8U78rqA4opn5ddw==
+"@honeybadger-io/js@^4.0.3":
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/@honeybadger-io/js/-/js-4.0.3.tgz#56eb7d26ee19aa5ff84942080a1cee0299ad784a"
+  integrity sha512-v1NVtM+vGO6Xe8ZbHs45V8INCasuQK6xSjgPPVNvaL2xgcAKfJhfMnqIqQWtBeu9cGvfAJusiMUiIge68jkQAA==
   dependencies:
-    "@types/express" "^4.17.13"
     stacktrace-parser "^0.1.10"
 
-"@honeybadger-io/react@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@honeybadger-io/react/-/react-2.0.1.tgz#50651ebd93fbb0daa2688d14d934301348cf62e8"
-  integrity sha512-7Sr0ExI+s4CDYXPuZf9nUoy6KUofzyrwH09ZcjUVELySGrSpaBEDJplGzZ3tIdaV/oYkltWfyRaC+rnghsiH6g==
+"@honeybadger-io/react@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@honeybadger-io/react/-/react-2.1.0.tgz#cd50020532aa475131597843de61ec426576adfe"
+  integrity sha512-Rt1gt0d3B5Ly5p3+EU9ugt9HSOQQc+TzHoKcF8bIqWBWQpWWeV8UJeIgeqNmcv//X9G2rg9Z5D04WBLAZ4o7fw==
   dependencies:
-    "@honeybadger-io/js" "^3.2.8"
+    "@honeybadger-io/js" "^4.0.3"
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
@@ -2573,9 +2572,9 @@
   integrity sha512-LKVP3cgXBT9RYj+t+9FDKwS5tdI+rPBXaNSkma7hvqy35lc7mAokC2zsqWJH0LaqIt3B962nuYI77hsJoT1gow==
 
 "@types/express-serve-static-core@^4.17.18":
-  version "4.17.28"
-  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.28.tgz#c47def9f34ec81dc6328d0b1b5303d1ec98d86b8"
-  integrity sha512-P1BJAEAW3E2DJUlkgq4tOL3RyMunoWXqbSCygWo5ZIWTjUgN1YnaXWW4VWl/oc8vs/XoYibEGBKP0uZyF4AHig==
+  version "4.17.29"
+  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.29.tgz#2a1795ea8e9e9c91b4a4bbe475034b20c1ec711c"
+  integrity sha512-uMd++6dMKS32EOuw1Uli3e3BPgdLIXmezcfHv7N4c1s3gkhikBplORPpMq3fuWkxncZN1reb16d5n8yhQ80x7Q==
   dependencies:
     "@types/node" "*"
     "@types/qs" "*"
@@ -10575,10 +10574,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.6.3:
-  version "4.6.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.3.tgz#eefeafa6afdd31d725584c67a0eaba80f6fc6c6c"
-  integrity sha512-yNIatDa5iaofVozS/uQJEl3JRWLKKGJKh6Yaiv0GLGSuhpFJe7P3SbHZ8/yjAHRQwKRoA6YZqlfjXWmVzoVSMw==
+typescript@^4.7.4:
+  version "4.7.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
+  integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
 
 uglify-js@^3.1.4:
   version "3.15.3"
