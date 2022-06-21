@@ -31,8 +31,8 @@ export type Webhook = {
 };
 
 const QUERY_WEBHOOKS = gql`
-  query Webhooks {
-    webhooks(first: 100) {
+  query Webhooks($first: Int!, $path: String) {
+    webhooks(first: $first, path: $path) {
       id
       path
       body
@@ -63,7 +63,14 @@ type SubscriptionWebhook = {
 };
 
 const WebhookList: React.FC = () => {
-  const { data, subscribeToMore } = useQuery<QueryWebhook>(QUERY_WEBHOOKS);
+  const path = useMemo(
+    () =>
+      window.location.pathname === "/" ? undefined : window.location.pathname,
+    [window.location.pathname]
+  );
+  const { data, subscribeToMore } = useQuery<QueryWebhook>(QUERY_WEBHOOKS, {
+    variables: { first: 100, path },
+  });
   const { value: baseUrl } = useContext(RedirectUrlContext);
   const { value: webhookStoreUrl } = useContext(WebhookStoreUrlContext);
 
@@ -71,7 +78,12 @@ const WebhookList: React.FC = () => {
     const unsuscribe = subscribeToMore<SubscriptionWebhook>({
       document: COMMENTS_SUBSCRIPTION,
       updateQuery: (prev, { subscriptionData }): QueryWebhook => {
-        if (!subscriptionData.data) return prev;
+        if (!subscriptionData.data) {
+          return prev;
+        }
+        if (path && subscriptionData.data.webhookAdded.path != path) {
+          return prev;
+        }
         const newWebhook = subscriptionData.data.webhookAdded;
         try {
           void forwardWebhookToLocalhost(baseUrl, newWebhook);
