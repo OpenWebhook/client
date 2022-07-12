@@ -105,7 +105,7 @@ const WebhookList: React.FC = () => {
     () => [
       {
         Header: "Id",
-        accessor: (webhook: Webhook) => webhook.id,
+        accessor: (webhook: Webhook) => webhook.id.substring(0, 11),
         title: "Id",
       },
       {
