@@ -1,7 +1,6 @@
 import NavBar from "@pluralsight/ps-design-system-navbar";
 import NavBrand from "@pluralsight/ps-design-system-navbrand";
 import React from "react";
-import { RedirectUrlInput } from "./RedirectUrl/RedirectUrl.component";
 import { WebhookStoreUrlInput } from "./WebhookStoreUrl/WebhookStoreUrl.component";
 import GitHubButton from "react-github-btn";
 import NavItem from "@pluralsight/ps-design-system-navitem";
@@ -68,10 +67,7 @@ export default function TopNav() {
     <div>
       <NavBar
         brand={<SkillsBranding />}
-        items={[
-          <WebhookStoreUrlInput key={"WebhookStoreUrlInput"} />,
-          <RedirectUrlInput key={"RedirectUrlInput"} />,
-        ]}
+        items={[<WebhookStoreUrlInput key={"WebhookStoreUrlInput"} />]}
         user={
           <NavItem>
             <GitHubButton
