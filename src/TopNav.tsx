@@ -65,32 +65,30 @@ function SkillsBranding(props: any) {
 
 export default function TopNav() {
   return (
-    <div>
-      <NavBar
-        brand={<SkillsBranding />}
-        items={[
-          <NavItem key={"WebhookStoreUrlInput"}>
-            <WebhookStoreUrlInput />
-          </NavItem>,
-          <NavItem key={"ProxyStatus"}>
-            <ProxyStatus />
-          </NavItem>,
-        ]}
-        user={
-          <NavItem key={"GitHubButton"}>
-            <GitHubButton
-              href="https://github.com/OpenWebhook/webhook-store"
-              data-color-scheme="no-preference: dark_high_contrast; light: light_high_contrast; dark: dark_high_contrast;"
-              data-icon="octicon-star"
-              data-show-count="true"
-              aria-label="Star OpenWebhook/webhook-store on GitHub"
-              data-size="large"
-            >
-              Star
-            </GitHubButton>
-          </NavItem>
-        }
-      />
-    </div>
+    <NavBar
+      brand={<SkillsBranding />}
+      items={[
+        <NavItem key={"WebhookStoreUrlInput"}>
+          <WebhookStoreUrlInput />
+        </NavItem>,
+        <NavItem key={"ProxyStatus"}>
+          <ProxyStatus />
+        </NavItem>,
+      ]}
+      user={
+        <NavItem key={"GitHubButton"}>
+          <GitHubButton
+            href="https://github.com/OpenWebhook/webhook-store"
+            data-color-scheme="no-preference: dark_high_contrast; light: light_high_contrast; dark: dark_high_contrast;"
+            data-icon="octicon-star"
+            data-show-count="true"
+            aria-label="Star OpenWebhook/webhook-store on GitHub"
+            data-size="large"
+          >
+            Star
+          </GitHubButton>
+        </NavItem>
+      }
+    />
   );
 }
