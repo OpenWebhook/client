@@ -4,6 +4,7 @@ import React from "react";
 import { WebhookStoreUrlInput } from "./WebhookStoreUrl/WebhookStoreUrl.component";
 import GitHubButton from "react-github-btn";
 import NavItem from "@pluralsight/ps-design-system-navitem";
+import { ProxyStatus } from "./ProxyStatus/ProxyStatus.component";
 
 function SkillsLogo() {
   return (
@@ -67,9 +68,16 @@ export default function TopNav() {
     <div>
       <NavBar
         brand={<SkillsBranding />}
-        items={[<WebhookStoreUrlInput key={"WebhookStoreUrlInput"} />]}
+        items={[
+          <NavItem key={"WebhookStoreUrlInput"}>
+            <WebhookStoreUrlInput />
+          </NavItem>,
+          <NavItem key={"ProxyStatus"}>
+            <ProxyStatus />
+          </NavItem>,
+        ]}
         user={
-          <NavItem>
+          <NavItem key={"GitHubButton"}>
             <GitHubButton
               href="https://github.com/OpenWebhook/webhook-store"
               data-color-scheme="no-preference: dark_high_contrast; light: light_high_contrast; dark: dark_high_contrast;"
