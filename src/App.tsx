@@ -42,14 +42,8 @@ export default function App() {
       <ApolloProvider client={createApolloClient(webhookStoreUrl)}>
         <Theme name={Theme.names.dark}>
           <Suspense fallback={<div>Loading...</div>}>
-            <AppFrame
-              topnav={() => {
-                return <SkillsTopNav />;
-              }}
-            >
-              <div style={{ background: core.colorsBlack }}>
-                <WebhookList />
-              </div>
+            <AppFrame topnav={<SkillsTopNav />}>
+              <WebhookList />
             </AppFrame>
           </Suspense>
         </Theme>
