@@ -18,7 +18,7 @@ export function ProxyStatus() {
         .catch(() => setStatus("Offline"));
 
     updateStatus();
-    const interval = setInterval(updateStatus, 20000);
+    const interval = setInterval(updateStatus, 2000);
 
     return () => clearInterval(interval);
   });
@@ -37,14 +37,28 @@ export function ProxyStatus() {
       }}
     >
       <div style={{ display: "flex", alignItems: "center" }}>
-        <Label
-          size={Label.sizes.xSmall}
-          style={{ marginRight: "8px", marginLeft: "8px" }}
-        >
-          Localhost proxy status: {status}
-        </Label>
-        {status === "OK" ? <Pulser /> : null}
-        {status === "Offline" ? <HelpIcon size={Icon.sizes.xSmall} /> : null}
+        {status === "OK" ? (
+          <>
+            <Label
+              size={Label.sizes.xSmall}
+              style={{ marginRight: "8px", marginLeft: "8px" }}
+            >
+              Localhost proxy status: {status}
+            </Label>
+            <Pulser />
+          </>
+        ) : null}
+        {status === "Offline" ? (
+          <>
+            <Label
+              size={Label.sizes.xSmall}
+              style={{ marginRight: "8px", marginLeft: "8px" }}
+            >
+              Debug webhooks on your localhost
+            </Label>
+            <HelpIcon size={Icon.sizes.xSmall} />
+          </>
+        ) : null}
       </div>
     </NavItem>
   );
