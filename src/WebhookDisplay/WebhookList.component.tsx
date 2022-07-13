@@ -10,7 +10,6 @@ import {
   useTable,
 } from "react-table";
 import { forwardWebhookToLocalhost } from "../forward-to-localhost";
-import { RedirectUrlContext } from "../RedirectUrl/RedirectUrl.context";
 import posthog from "posthog-js";
 import { WebhookStoreUrlContext } from "../WebhookStoreUrl/WebhookStoreUrl.context";
 
@@ -71,7 +70,7 @@ const WebhookList: React.FC = () => {
   const { data, subscribeToMore } = useQuery<QueryWebhook>(QUERY_WEBHOOKS, {
     variables: { first: 100, path },
   });
-  const { value: baseUrl } = useContext(RedirectUrlContext);
+  const baseUrl = "http://localhost:8010/proxy";
   const { value: webhookStoreUrl } = useContext(WebhookStoreUrlContext);
 
   useEffect(() => {
@@ -105,7 +104,7 @@ const WebhookList: React.FC = () => {
     () => [
       {
         Header: "Id",
-        accessor: (webhook: Webhook) => webhook.id,
+        accessor: (webhook: Webhook) => webhook.id.substring(0, 11),
         title: "Id",
       },
       {
