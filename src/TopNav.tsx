@@ -71,9 +71,7 @@ export default function TopNav() {
         <NavItem key={"WebhookStoreUrlInput"}>
           <WebhookStoreUrlInput />
         </NavItem>,
-        <NavItem key={"ProxyStatus"}>
-          <ProxyStatus />
-        </NavItem>,
+        <ProxyStatus key={"ProxyStatus"} />,
       ]}
       user={
         <NavItem key={"GitHubButton"}>
