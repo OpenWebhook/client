@@ -4,19 +4,20 @@ import React, { useEffect, useState } from "react";
 import { Pulser } from "./Pulser.component";
 
 export function ProxyStatus() {
-  //   const status = await axios.get("http://localhost:8010/healthcheck");
-  //   console.log(status);
-  const [status, setStatus] = useState<"unkown" | "OK" | "KO">("unkown");
+  const [status, setStatus] = useState<"unkown" | "OK" | "Offline">("unkown");
   useEffect(() => {
-    axios
-      .get("http://localhost:8010/health")
-      .then(() => setStatus("OK"))
-      .catch(() => setStatus("KO"));
+    const interval = setInterval(() => {
+      axios
+        .get("http://localhost:8010/health")
+        .then(() => setStatus("OK"))
+        .catch(() => setStatus("Offline"));
+    }, 2000);
+
+    return () => clearInterval(interval);
   });
 
-  console.log(status);
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", alignItems: "center" }}>
       <Label
         size={Label.sizes.xSmall}
         style={{ marginRight: "8px", marginLeft: "8px" }}
