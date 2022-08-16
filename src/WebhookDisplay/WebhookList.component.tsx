@@ -14,7 +14,7 @@ import posthog from "posthog-js";
 import { WebhookStoreUrlContext } from "../WebhookStoreUrl/WebhookStoreUrl.context";
 
 const largePayloadCellStyle: React.CSSProperties = {
-  width: 300,
+  minWidth: 100,
   maxWidth: 300,
   overflow: "hidden",
   textOverflow: "ellipsis",
@@ -106,11 +106,13 @@ const WebhookList: React.FC = () => {
         Header: "Id",
         accessor: (webhook: Webhook) => webhook.id.substring(0, 11),
         title: "Id",
+        style: { minWidth: "140px" },
       },
       {
         Header: "Path",
         accessor: (webhook: Webhook) => webhook.path,
         title: "Path",
+        style: largePayloadCellStyle,
       },
       {
         Header: "Body",
@@ -123,6 +125,7 @@ const WebhookList: React.FC = () => {
         accessor: (webhook: Webhook) =>
           new Date(webhook.receivedAt).toLocaleString(),
         title: "Received at",
+        style: { minWidth: "500px" },
       },
     ],
     [data]

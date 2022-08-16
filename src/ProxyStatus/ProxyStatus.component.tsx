@@ -3,7 +3,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Pulser } from "./Pulser.component";
 import Icon, { CodeIcon, HelpIcon } from "@pluralsight/ps-design-system-icon";
-import Button from "@pluralsight/ps-design-system-button";
 import NavItem from "@pluralsight/ps-design-system-navitem";
 
 const openProxyCommand = "npx webhook-store-cli --noOpen";
