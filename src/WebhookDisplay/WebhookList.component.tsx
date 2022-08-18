@@ -14,7 +14,7 @@ import posthog from "posthog-js";
 import { WebhookStoreUrlContext } from "../WebhookStoreUrl/WebhookStoreUrl.context";
 
 const largePayloadCellStyle: React.CSSProperties = {
-  minWidth: 100,
+  minWidth: 200,
   maxWidth: 300,
   overflow: "hidden",
   textOverflow: "ellipsis",
@@ -125,7 +125,7 @@ const WebhookList: React.FC = () => {
         accessor: (webhook: Webhook) =>
           new Date(webhook.receivedAt).toLocaleString(),
         title: "Received at",
-        style: { minWidth: "500px" },
+        style: { minWidth: "180px" },
       },
     ],
     [data]

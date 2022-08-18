@@ -1,4 +1,8 @@
-import { EqualColumnLayout } from "@pluralsight/ps-design-system-layout";
+import { layout } from "@pluralsight/ps-design-system-core";
+import {
+  EqualColumnLayout,
+  PageWidthLayout,
+} from "@pluralsight/ps-design-system-layout";
 import React, { useState } from "react";
 import { TableInstance } from "react-table";
 import { FlexContainer, Paginator } from "./Paginator.component";
@@ -17,7 +21,13 @@ export const WebhookPage: React.FC<{
       count={EqualColumnLayout.counts.two}
       style={{ flexWrap: "nowrap" }}
     >
-      <div style={{ height: "calc(100vh - 150px)" }}>
+      <PageWidthLayout
+        key={"PageWidthLayout"}
+        style={{
+          padding: `0 ${layout.spacingXSmall}`,
+          minWidth: "850px",
+        }}
+      >
         <WebhookTable
           webhooks={webhooks}
           setSelectedWebhook={setSelectedWebhook}
@@ -26,7 +36,7 @@ export const WebhookPage: React.FC<{
         <FlexContainer>
           <Paginator table={table} />
         </FlexContainer>
-      </div>
+      </PageWidthLayout>
       <WebhookPanel webhook={selectedWebhook} />
     </EqualColumnLayout>
   );
