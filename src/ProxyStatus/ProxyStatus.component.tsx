@@ -1,65 +1,11 @@
 import { Label } from "@pluralsight/ps-design-system-text";
 import axios from "axios";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Pulser } from "./Pulser.component";
 import NavItem from "@pluralsight/ps-design-system-navitem";
-import helpIcon from "../animations/help.json";
-import lottie from "lottie-web";
-import "./help-btn.css";
+import { HelpText } from "./HelpButton.component";
 
 const openProxyCommand = "npx webhook-store-cli --noOpen";
-
-function HelpText() {
-  const container = useRef(null);
-
-  useEffect(() => {
-    if (container.current) {
-      lottie.loadAnimation({
-        container: container.current,
-        renderer: "svg",
-        loop: false,
-        autoplay: false,
-        animationData: helpIcon,
-      });
-      lottie.setSpeed(3);
-    }
-
-    return () => {
-      lottie.destroy();
-    };
-  }, []);
-
-  return (
-    <>
-      <Label
-        onMouseEnter={() => {
-          lottie.setDirection(1);
-          lottie.play();
-        }}
-        onMouseLeave={() => {
-          lottie.setDirection(-1);
-          lottie.play();
-        }}
-        size={Label.sizes.xSmall}
-        style={{ marginRight: "8px", marginLeft: "8px" }}
-      >
-        Debug webhooks on your localhost
-      </Label>
-      <div
-        className="help-btn"
-        ref={container}
-        onMouseEnter={() => {
-          lottie.setDirection(1);
-          lottie.play();
-        }}
-        onMouseLeave={() => {
-          lottie.setDirection(-1);
-          lottie.play();
-        }}
-      />
-    </>
-  );
-}
 
 export function ProxyStatus() {
   const [status, setStatus] = useState<"unkown" | "OK" | "Offline">("unkown");
