@@ -22,6 +22,7 @@ export const LoginOrDisplayUser = () => {
 
   const disconnect = useCallback(() => {
     localStorage.removeItem("accessToken");
+    location.reload();
   }, []);
 
   if (accessToken) {
