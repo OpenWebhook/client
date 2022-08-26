@@ -2,8 +2,8 @@ import { Label } from "@pluralsight/ps-design-system-text";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Pulser } from "./Pulser.component";
-import Icon, { CodeIcon, HelpIcon } from "@pluralsight/ps-design-system-icon";
 import NavItem from "@pluralsight/ps-design-system-navitem";
+import { HelpText } from "./HelpButton.component";
 
 const openProxyCommand = "npx webhook-store-cli --noOpen";
 
@@ -47,17 +47,7 @@ export function ProxyStatus() {
             <Pulser />
           </>
         ) : null}
-        {status === "Offline" ? (
-          <>
-            <Label
-              size={Label.sizes.xSmall}
-              style={{ marginRight: "8px", marginLeft: "8px" }}
-            >
-              Debug webhooks on your localhost
-            </Label>
-            <HelpIcon size={Icon.sizes.xSmall} />
-          </>
-        ) : null}
+        {status === "Offline" ? <HelpText /> : null}
       </div>
     </NavItem>
   );
