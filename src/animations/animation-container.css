@@ -1,0 +1,7 @@
+.animation-container-white path {
+  stroke: rgb(255, 255, 255, 0.9);
+}
+
+.animation-container-blue path {
+  stroke: rgb(46, 160, 214);
+}

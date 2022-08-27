@@ -2,7 +2,9 @@ import React, { useEffect, useRef } from "react";
 import helpIcon from "../animations/help.json";
 import lottie from "lottie-web";
 import { Label } from "@pluralsight/ps-design-system-text";
-import "./help-btn.css";
+import "../animations/animation-container.css";
+
+const animationName = "help";
 
 export function HelpText() {
   const container = useRef(null);
@@ -15,12 +17,13 @@ export function HelpText() {
         loop: false,
         autoplay: false,
         animationData: helpIcon,
+        name: animationName,
       });
       lottie.setSpeed(3);
     }
 
     return () => {
-      lottie.destroy();
+      lottie.destroy(animationName);
     };
   }, []);
 
@@ -28,12 +31,12 @@ export function HelpText() {
     <>
       <Label
         onMouseEnter={() => {
-          lottie.setDirection(1);
-          lottie.play();
+          lottie.setDirection(1, animationName);
+          lottie.play(animationName);
         }}
         onMouseLeave={() => {
-          lottie.setDirection(-1);
-          lottie.play();
+          lottie.setDirection(-1, animationName);
+          lottie.play(animationName);
         }}
         size={Label.sizes.xSmall}
         style={{ marginRight: "8px", marginLeft: "8px" }}
@@ -41,15 +44,15 @@ export function HelpText() {
         Debug webhooks on your localhost
       </Label>
       <div
-        className="help-btn"
+        className="animation-container-white"
         ref={container}
         onMouseEnter={() => {
-          lottie.setDirection(1);
-          lottie.play();
+          lottie.setDirection(1, animationName);
+          lottie.play(animationName);
         }}
         onMouseLeave={() => {
-          lottie.setDirection(-1);
-          lottie.play();
+          lottie.setDirection(-1, animationName);
+          lottie.play(animationName);
         }}
       />
     </>

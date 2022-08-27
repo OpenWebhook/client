@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import EmptyState from "@pluralsight/ps-design-system-emptystate";
-import Button from "@pluralsight/ps-design-system-button";
+import { CopyButton } from "./CopyButton.component";
 
 const Emptystate = ({ webhookStoreUrl }: { webhookStoreUrl: string }) => {
   const curlCommand = useMemo(
@@ -8,6 +8,7 @@ const Emptystate = ({ webhookStoreUrl }: { webhookStoreUrl: string }) => {
       `curl -X POST ${webhookStoreUrl} -d 'name=Coucou' -d 'email=contact@openwebhook.io' --header "X-MyHeader: 123"`,
     [webhookStoreUrl]
   );
+
   return (
     <EmptyState
       style={{ height: "calc(100vh - 48px)" }}
@@ -23,16 +24,7 @@ const Emptystate = ({ webhookStoreUrl }: { webhookStoreUrl: string }) => {
       }
       actions={
         <EmptyState.Actions>
-          <Button
-            appearance={Button.appearances.stroke}
-            onClick={() => {
-              navigator.clipboard.writeText(curlCommand).then(() => {
-                alert("Copied " + curlCommand);
-              });
-            }}
-          >
-            Copy curl
-          </Button>
+          <CopyButton text={curlCommand} />
         </EmptyState.Actions>
       }
     />
