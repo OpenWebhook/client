@@ -17,7 +17,7 @@ export function ProxyStatus() {
         .catch(() => setStatus("Offline"));
 
     updateStatus();
-    const interval = setInterval(updateStatus, 2000);
+    const interval = setInterval(updateStatus, 200000);
 
     return () => clearInterval(interval);
   });
