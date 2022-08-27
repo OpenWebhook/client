@@ -45,6 +45,7 @@ export function HelpText() {
       </Label>
       <div
         className="animation-container-white"
+        style={{ marginLeft: "-8px" }}
         ref={container}
         onMouseEnter={() => {
           lottie.setDirection(1, animationName);
