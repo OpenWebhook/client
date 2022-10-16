@@ -4,6 +4,7 @@
   "homepage": "https://www.openwebhook.io",
   "license": "GPL-3.0-or-later",
   "scripts": {
+    "start:dev": "vite",
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
