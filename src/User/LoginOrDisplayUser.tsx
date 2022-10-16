@@ -22,6 +22,7 @@ const getAccessToken = async (
   identityToken: string,
   webhookStoreUrl: string
 ): Promise<string> => {
+  const webhookStoreHostname = new URL(webhookStoreUrl).hostname;
   const accessTokenRequest = await fetch(
     `${import.meta.env.VITE_AUTH_TENANT_URL}/webhook-store-auth/access-token`,
     {
@@ -31,7 +32,7 @@ const getAccessToken = async (
       },
       method: "POST",
       body: JSON.stringify({
-        webhookStoreUrl,
+        webhookStoreUrl: webhookStoreHostname,
       }),
     }
   );
