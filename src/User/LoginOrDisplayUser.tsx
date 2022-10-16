@@ -1,6 +1,7 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import NavUser from "@pluralsight/ps-design-system-navuser";
 import { decodeJWT } from "../utils/decode-jwt";
+import { WebhookStoreUrlContext } from "../WebhookStoreUrl/WebhookStoreUrl.context";
 
 const getIdentityTokenFromStorageAndCleanUrl = (): string | null => {
   const storedIdentityToken = localStorage.getItem("identityToken");
@@ -17,8 +18,10 @@ const getIdentityTokenFromStorageAndCleanUrl = (): string | null => {
   return null;
 };
 
-const getAccessToken = async (identityToken: string): Promise<string> => {
-  console.log("getAccessToken");
+const getAccessToken = async (
+  identityToken: string,
+  webhookStoreUrl: string
+): Promise<string> => {
   const accessTokenRequest = await fetch(
     `${import.meta.env.VITE_AUTH_TENANT_URL}/webhook-store-auth/access-token`,
     {
@@ -28,12 +31,11 @@ const getAccessToken = async (identityToken: string): Promise<string> => {
       },
       method: "POST",
       body: JSON.stringify({
-        webhookStoreUrl: "samox.github.webhook.store",
+        webhookStoreUrl,
       }),
     }
   );
   const json = await accessTokenRequest.json();
-
   const accessToken = json.accessToken;
   localStorage.setItem("accessToken", accessToken);
 
@@ -42,11 +44,13 @@ const getAccessToken = async (identityToken: string): Promise<string> => {
 
 export const LoginOrDisplayUser = () => {
   const identityToken = getIdentityTokenFromStorageAndCleanUrl();
+  const { value: webhookStoreUrl } = useContext(WebhookStoreUrlContext);
+
   useEffect(() => {
     if (identityToken) {
-      getAccessToken(identityToken);
+      getAccessToken(identityToken, webhookStoreUrl);
     }
-  }, [identityToken]);
+  }, [identityToken, webhookStoreUrl]);
 
   const disconnect = useCallback(() => {
     localStorage.removeItem("identityToken");
