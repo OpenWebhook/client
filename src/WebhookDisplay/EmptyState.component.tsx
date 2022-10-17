@@ -12,10 +12,18 @@ const Emptystate = ({ webhookStoreUrl }: { webhookStoreUrl: string }) => {
   return (
     <EmptyState
       style={{ height: "calc(100vh - 48px)" }}
-      heading={<EmptyState.Heading>Your store is empty</EmptyState.Heading>}
+      heading={
+        <EmptyState.Heading>
+          1. Receive webhooks from third parties
+          <br />
+          2. Analyse them
+          <br />
+          3. Convey them on your localhost
+        </EmptyState.Heading>
+      }
       caption={
         <EmptyState.Caption>
-          Try sending a request to your store {webhookStoreUrl}. <br />{" "}
+          Try sending a request to your store {webhookStoreUrl} <br />{" "}
           {curlCommand}
         </EmptyState.Caption>
       }
