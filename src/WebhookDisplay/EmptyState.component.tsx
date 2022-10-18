@@ -5,18 +5,25 @@ import { CopyButton } from "./CopyButton.component";
 const Emptystate = ({ webhookStoreUrl }: { webhookStoreUrl: string }) => {
   const curlCommand = useMemo(
     () =>
-      `curl -X POST ${webhookStoreUrl} -d 'name=Coucou' -d 'email=contact@openwebhook.io' --header "X-MyHeader: 123"`,
+      `curl -X POST ${webhookStoreUrl}/third-party/webhook/path -d 'generic-property=foo' -d 'generic-property2=bar' --header 'X-generic-header: baz'`,
     [webhookStoreUrl]
   );
 
   return (
     <EmptyState
       style={{ height: "calc(100vh - 48px)" }}
-      heading={<EmptyState.Heading>Your store is empty</EmptyState.Heading>}
+      heading={
+        <EmptyState.Heading>
+          1. Receive webhooks from third parties
+          <br />
+          2. Analyse them
+          <br />
+          3. Convey them on your localhost
+        </EmptyState.Heading>
+      }
       caption={
         <EmptyState.Caption>
-          Try sending a request to your store {webhookStoreUrl}. <br />{" "}
-          {curlCommand}
+          Try sending a third party webhook to your store.
         </EmptyState.Caption>
       }
       illustration={
