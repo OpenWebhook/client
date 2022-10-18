@@ -13,12 +13,12 @@ const Emptystate = ({ webhookStoreUrl }: { webhookStoreUrl: string }) => {
     <EmptyState
       style={{ height: "calc(100vh - 48px)" }}
       heading={
-        <EmptyState.Heading>
-          1. Receive webhooks from third parties
+        <EmptyState.Heading style={{ width: "600px" }}>
+          1. We receive your third parties webhooks
           <br />
-          2. Analyse them
+          2. You analyse them online
           <br />
-          3. Convey them on your localhost
+          3. You replay them later on localhost
         </EmptyState.Heading>
       }
       caption={
