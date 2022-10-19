@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - release/*
+  release:
+    types: [published]
+
 jobs:
   deploy:
     runs-on: 'ubuntu-latest'
@@ -32,4 +35,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           keep_files: true
-          destination_dir: releases/v1
+          destination_dir: ${{ github.ref }}
