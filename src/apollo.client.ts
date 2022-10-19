@@ -3,6 +3,7 @@ import { GraphQLWsLink } from "@apollo/client/link/subscriptions";
 import { getMainDefinition } from "@apollo/client/utilities";
 import { createClient } from "graphql-ws";
 import { setContext } from "@apollo/client/link/context";
+import { ACCESS_TOKEN_KEY } from "./local-storage";
 
 export const createApolloClient = (httpUrl: string) => {
   const origin = new URL(httpUrl).origin;
@@ -14,14 +15,11 @@ export const createApolloClient = (httpUrl: string) => {
   });
 
   const authLink = setContext((_, { headers }) => {
-    // get the authentication token from local storage if it exists
-    const token = localStorage.getItem("accessToken");
-    console.log("toekn", token);
-    // return the headers to the context so httpLink can read them
+    const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
     return {
       headers: {
         ...headers,
-        authorization: token ? `Bearer ${token}` : "",
+        authorization: accessToken ? `Bearer ${accessToken}` : "",
       },
     };
   });

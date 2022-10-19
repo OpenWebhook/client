@@ -2,16 +2,17 @@ import React, { useCallback, useContext, useEffect } from "react";
 import NavUser from "@pluralsight/ps-design-system-navuser";
 import { decodeJWT } from "../utils/decode-jwt";
 import { WebhookStoreUrlContext } from "../WebhookStoreUrl/WebhookStoreUrl.context";
+import { ACCESS_TOKEN_KEY, IDENTITY_TOKEN_KEY } from "../local-storage";
 
 const getIdentityTokenFromStorageAndCleanUrl = (): string | null => {
-  const storedIdentityToken = localStorage.getItem("identityToken");
+  const storedIdentityToken = localStorage.getItem(IDENTITY_TOKEN_KEY);
   if (storedIdentityToken) {
     return storedIdentityToken;
   }
   const queryParams = new URLSearchParams(window.location.search);
   const identityTokenFromUrl = queryParams.get("access_token");
   if (identityTokenFromUrl) {
-    localStorage.setItem("identityToken", identityTokenFromUrl);
+    localStorage.setItem(IDENTITY_TOKEN_KEY, identityTokenFromUrl);
     return identityTokenFromUrl;
   }
 
@@ -38,7 +39,7 @@ const getAccessToken = async (
   );
   const json = await accessTokenRequest.json();
   const accessToken = json.accessToken;
-  localStorage.setItem("accessToken", accessToken);
+  localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
 
   return accessToken;
 };
@@ -54,8 +55,8 @@ export const LoginOrDisplayUser = () => {
   }, [identityToken, webhookStoreUrl]);
 
   const disconnect = useCallback(() => {
-    localStorage.removeItem("identityToken");
-    localStorage.removeItem("accessToken");
+    localStorage.removeItem(IDENTITY_TOKEN_KEY);
+    localStorage.removeItem(ACCESS_TOKEN_KEY);
     location.reload();
   }, []);
 
