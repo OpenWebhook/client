@@ -57,7 +57,7 @@ export const LoginOrDisplayUser = () => {
   const disconnect = useCallback(() => {
     localStorage.removeItem(IDENTITY_TOKEN_KEY);
     localStorage.removeItem(ACCESS_TOKEN_KEY);
-    location.reload();
+    window.location.href = "/";
   }, []);
 
   if (identityToken) {
