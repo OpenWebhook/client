@@ -9,7 +9,7 @@
     "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "jest",
-    "predeploy": "vite build",
+    "predeploy": "yarn build && cp CNAME ./dist/CNAME",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
