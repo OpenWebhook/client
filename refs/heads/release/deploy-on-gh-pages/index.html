@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.7e76824a.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webhook Store</title>
+  <script>
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  </script>
+  <script type="module" crossorigin src="/assets/index.58c46d2f.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor.84677dc6.js">
+  <link rel="stylesheet" href="/assets/index.d6864e4a.css">
+</head>
+
+<body style="background-color: #0D0F12;">
+  <div id="root"></div>
+  
+</body>
+
+</html>
