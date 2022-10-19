@@ -21,5 +21,15 @@ jobs:
           cache: "yarn"
       - run: yarn
       - run: yarn predeploy
-      - run: echo "Push sur /releases/latest"
-      - run: echo "Push sur /releases/versionname"
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          keep_files: true
+          destination_dir: latest
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          keep_files: true
+          destination_dir: releases/v1
