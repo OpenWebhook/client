@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from "react";
+import React, { useCallback } from "react";
 import NavUser from "@pluralsight/ps-design-system-navuser";
 import { decodeJWT } from "../utils/decode-jwt";
 import { ACCESS_TOKEN_KEY, IDENTITY_TOKEN_KEY } from "../local-storage";
@@ -25,16 +25,6 @@ export const LoginOrDisplayUser = () => {
     localStorage.removeItem(IDENTITY_TOKEN_KEY);
     localStorage.removeItem(ACCESS_TOKEN_KEY);
     window.location.href = "/";
-  }, []);
-
-  useEffect(() => {
-    const autoredirectOnGithubAuth =
-      window.location.hostname === "github.webhook.store";
-    if (autoredirectOnGithubAuth) {
-      window.location.href = `${
-        import.meta.env.VITE_AUTH_TENANT_URL
-      }/oauth/login`;
-    }
   }, []);
 
   if (identityToken) {
