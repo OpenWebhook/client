@@ -27,6 +27,16 @@ export const LoginOrDisplayUser = () => {
     window.location.href = "/";
   }, []);
 
+  useEffect(() => {
+    const autoredirectOnGithubAuth =
+      window.location.hostname === "github.webhook.store";
+    if (autoredirectOnGithubAuth) {
+      window.location.href = `${
+        import.meta.env.VITE_AUTH_TENANT_URL
+      }/oauth/login`;
+    }
+  }, []);
+
   if (identityToken) {
     const decodedToken =
       decodeJWT<{ name: string; picture: string }, any>(identityToken);
