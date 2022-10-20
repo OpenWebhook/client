@@ -6,7 +6,6 @@ const AppFrame = React.lazy(
   () => import("@pluralsight/ps-design-system-appframe")
 );
 const SkillsTopNav = React.lazy(() => import("./TopNav"));
-import * as core from "@pluralsight/ps-design-system-core";
 import Theme from "@pluralsight/ps-design-system-theme";
 
 const WebhookList = React.lazy(
