@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
-    "@honeybadger-io/js": "^4.0.3",
+    "@honeybadger-io/js": "^4.6.2",
     "@honeybadger-io/react": "^2.1.0",
     "@pluralsight/ps-design-system-appframe": "^6.1.1",
     "@pluralsight/ps-design-system-button": "^24.1.1",
