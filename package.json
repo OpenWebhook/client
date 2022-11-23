@@ -36,6 +36,7 @@
     "@pluralsight/ps-design-system-textinput": "^12.1.1",
     "@pluralsight/ps-design-system-theme": "^8.1.24",
     "@pluralsight/ps-design-system-verticaltabs": "^8.1.1",
+    "@simplewebauthn/browser": "^6.2.2",
     "@storybook/react": "^6.4.22",
     "axios": "^0.27.2",
     "buffer": "^6.0.3",
