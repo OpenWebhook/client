@@ -1270,12 +1270,21 @@
   resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.1.1.tgz#076d78ce99822258cf813ecc1e7fa460fa74d052"
   integrity sha512-NQ17ii0rK1b34VZonlmT2QMJFI70m0TRwbknO/ihlbatXyaktDhN/98vBiUU6kNBPljqGqyIrl2T4nY2RpFANg==
 
-"@honeybadger-io/js@^4.0.3":
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/@honeybadger-io/js/-/js-4.0.3.tgz#56eb7d26ee19aa5ff84942080a1cee0299ad784a"
-  integrity sha512-v1NVtM+vGO6Xe8ZbHs45V8INCasuQK6xSjgPPVNvaL2xgcAKfJhfMnqIqQWtBeu9cGvfAJusiMUiIge68jkQAA==
+"@honeybadger-io/core@^4.8.1":
+  version "4.8.1"
+  resolved "https://registry.yarnpkg.com/@honeybadger-io/core/-/core-4.8.1.tgz#3d9afb792a78128eb1c46e58a14342ca1d7f0589"
+  integrity sha512-P/4pXSQfc7bzz55vifOPcCoiPUrepcPN3KFBQpGWwTzk4gDSzvmQmwa02FY+e7VEXpqpxIBbQdl3w7h+BedKqw==
   dependencies:
     stacktrace-parser "^0.1.10"
+
+"@honeybadger-io/js@^4.0.3", "@honeybadger-io/js@^4.8.1":
+  version "4.8.1"
+  resolved "https://registry.yarnpkg.com/@honeybadger-io/js/-/js-4.8.1.tgz#21376b73ead0d2e817e0a19aab5f0f0e742a7aaf"
+  integrity sha512-mqixvew+Zhq/ctjp24qHMxc3f5fqqkXZTQ5d9IzI5XlKwBYExrGZIfmZllMQkSNMO9M5FEFLrumkgotnmKkNnw==
+  dependencies:
+    "@honeybadger-io/core" "^4.8.1"
+    "@types/aws-lambda" "^8.10.89"
+    "@types/express" "^4.17.13"
 
 "@honeybadger-io/react@^2.1.0":
   version "2.1.0"
@@ -2510,6 +2519,11 @@
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@types/aria-query/-/aria-query-4.2.2.tgz#ed4e0ad92306a704f9fb132a0cfcf77486dbe2bc"
   integrity sha512-HnYpAE1Y6kRyKM/XkEuiRQhTHvkzMBurTHnpFLYLBGPIylZNPs9jJcuOOYWxPLJCSEtmZT0Y8rHDokKN7rRTig==
+
+"@types/aws-lambda@^8.10.89":
+  version "8.10.109"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.109.tgz#2f434cbfafe083529e365fe9c114787827a169a8"
+  integrity sha512-/ME92FneNyXQzrAfcnQQlW1XkCZGPDlpi2ao1MJwecN+6SbeonKeggU8eybv1DfKli90FAVT1MlIZVXfwVuCyg==
 
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.14":
   version "7.1.19"
