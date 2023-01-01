@@ -27,7 +27,7 @@
     "@pluralsight/ps-design-system-link": "^13.0.11",
     "@pluralsight/ps-design-system-navbar": "^6.1.1",
     "@pluralsight/ps-design-system-navbrand": "^5.0.11",
-    "@pluralsight/ps-design-system-navcookiebanner": "^4.1.1",
+    "@pluralsight/ps-design-system-navcookiebanner": "^4.1.3",
     "@pluralsight/ps-design-system-navitem": "^6.1.1",
     "@pluralsight/ps-design-system-navuser": "^5.0.16",
     "@pluralsight/ps-design-system-normalize": "^7.0.4",

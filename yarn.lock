@@ -1651,17 +1651,15 @@
     focus-within "^3.0.2"
     hoist-non-react-statics "^3.3.0"
 
-"@pluralsight/ps-design-system-icon@^25.4.0":
-  version "25.4.0"
-  resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-icon/-/ps-design-system-icon-25.4.0.tgz#a1485b8dae17181348b32a93a9032f7a89fbd286"
-  integrity sha512-R5XOsg3mCsickFlUqkfG5rGh4PHXuD2GXB3WahU9EzC1K7IWibpW4UI7g3rJJ8ZsEG8DMbedmrBoPSgM8Xyfxg==
+"@pluralsight/ps-design-system-icon@^25.4.0", "@pluralsight/ps-design-system-icon@^25.4.1":
+  version "25.4.1"
+  resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-icon/-/ps-design-system-icon-25.4.1.tgz#9ca18733eccb65bc03097731d17247b4032c467d"
+  integrity sha512-OcBjsIT7tNHQk3Cnb0Bk9+hHEMzrrN/oXVqeh9jppqg3G2MwQWtjFm/EmVg+tk+3cN9IAD2ZY8Jn0EaAokXcnA==
   dependencies:
     "@pluralsight/ps-design-system-core" "^10.0.4"
     "@pluralsight/ps-design-system-util" "^10.1.3"
-    "@types/svgo" "^2.3.0"
     arg "^4.1.1"
     fast-glob "^3.1.0"
-    svgo "^2.3.1"
 
 "@pluralsight/ps-design-system-layout@^12.0.14":
   version "12.0.14"
@@ -1699,13 +1697,13 @@
     "@pluralsight/ps-design-system-halo" "^12.0.8"
     "@pluralsight/ps-design-system-util" "^10.1.3"
 
-"@pluralsight/ps-design-system-navcookiebanner@^4.1.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-navcookiebanner/-/ps-design-system-navcookiebanner-4.1.1.tgz#8775db08a90ea184cf40b6b1117e7adb07acd08e"
-  integrity sha512-nTtDCcEqf2tDXnJQWOyW/totaR0yAAMTnO9rcdKaNKlsO7y/0vP4yI/PQNYcbXGRvGZ8hLK0H4dHDg1Kx4Ycfg==
+"@pluralsight/ps-design-system-navcookiebanner@^4.1.3":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-navcookiebanner/-/ps-design-system-navcookiebanner-4.1.3.tgz#56d549bd40d6e36b41fc82f84d1846403065be29"
+  integrity sha512-TepZIMxVB51YgUQCTSZWa9DNAr1jxZKH3YnhlmovMFwzUGyEtDsjwo9bzGHHt5tKua2eUmvny8UMH3i8KeM1OQ==
   dependencies:
     "@pluralsight/ps-design-system-core" "^10.0.4"
-    "@pluralsight/ps-design-system-icon" "^25.4.0"
+    "@pluralsight/ps-design-system-icon" "^25.4.1"
     "@pluralsight/ps-design-system-util" "^10.1.3"
     react-cookie "^4.0.3"
 
@@ -2501,11 +2499,6 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
-"@trysound/sax@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@trysound/sax/-/sax-0.2.0.tgz#cccaab758af56761eb7bf37af6f03f326dd798ad"
-  integrity sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==
-
 "@types/aria-query@^4.2.0":
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@types/aria-query/-/aria-query-4.2.2.tgz#ed4e0ad92306a704f9fb132a0cfcf77486dbe2bc"
@@ -2809,13 +2802,6 @@
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-2.0.1.tgz#20f18294f797f2209b5f65c8e3b5c8e8261d127c"
   integrity sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==
-
-"@types/svgo@^2.3.0":
-  version "2.6.3"
-  resolved "https://registry.yarnpkg.com/@types/svgo/-/svgo-2.6.3.tgz#0786d8329b67cd48d84e57cb92b79832b85e6c8e"
-  integrity sha512-5sP0Xgo0dXppY0tbYF6TevB/1+tzFLuu71XXxC/zGvQAn9PW7y+DwtDO81g0ZUPye00K6tPwtsLDOpARa0mFcA==
-  dependencies:
-    "@types/node" "*"
 
 "@types/tapable@^1", "@types/tapable@^1.0.5":
   version "1.0.8"
@@ -4355,11 +4341,6 @@ commander@^6.2.1:
   resolved "https://registry.yarnpkg.com/commander/-/commander-6.2.1.tgz#0792eb682dfbc325999bb2b84fddddba110ac73c"
   integrity sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==
 
-commander@^7.2.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
-  integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
-
 common-path-prefix@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/common-path-prefix/-/common-path-prefix-3.0.0.tgz#7d007a7e07c58c4b4d5f433131a19141b29f11e0"
@@ -4640,14 +4621,6 @@ css-select@^4.1.3:
     domutils "^2.8.0"
     nth-check "^2.0.1"
 
-css-tree@^1.1.2, css-tree@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/css-tree/-/css-tree-1.1.3.tgz#eb4870fb6fd7707327ec95c2ff2ab09b5e8db91d"
-  integrity sha512-tRpdppF7TRazZrjJ6v3stzv93qxRcSsFmW6cX0Zm2NVKpxE1WV1HblnghVv9TreireHkqI/VDEsfolRF1p6y7Q==
-  dependencies:
-    mdn-data "2.0.14"
-    source-map "^0.6.1"
-
 css-what@^6.0.1:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-6.1.0.tgz#fb5effcf76f1ddea2c81bdfaa4de44e79bac70f4"
@@ -4671,13 +4644,6 @@ cssesc@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
-
-csso@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/csso/-/csso-4.2.0.tgz#ea3a561346e8dc9f546d6febedd50187cf389529"
-  integrity sha512-wvlcdIbf6pwKEk7vHj8/Bkc0B4ylXZruLvOgs9doS5eOsOpuodOV2zJChSpkp+pRpYQLQMeF04nr3Z68Sta9jA==
-  dependencies:
-    css-tree "^1.1.2"
 
 cssom@^0.4.4:
   version "0.4.4"
@@ -7805,11 +7771,6 @@ mdast-util-to-hast@10.0.1:
     unist-util-position "^3.0.0"
     unist-util-visit "^2.0.0"
 
-mdn-data@2.0.14:
-  version "2.0.14"
-  resolved "https://registry.yarnpkg.com/mdn-data/-/mdn-data-2.0.14.tgz#7113fc4281917d63ce29b43446f701e68c25ba50"
-  integrity sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==
-
 mdurl@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/mdurl/-/mdurl-1.0.1.tgz#fe85b2ec75a59037f2adfec100fd6c601761152e"
@@ -10252,19 +10213,6 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
-
-svgo@^2.3.1:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/svgo/-/svgo-2.8.0.tgz#4ff80cce6710dc2795f0c7c74101e6764cfccd24"
-  integrity sha512-+N/Q9kV1+F+UeWYoSiULYo4xYSDQlTgb+ayMobAXPwMnLvop7oxKMo9OzIrX5x3eS4L4f2UHhc9axXwY8DpChg==
-  dependencies:
-    "@trysound/sax" "0.2.0"
-    commander "^7.2.0"
-    css-select "^4.1.3"
-    css-tree "^1.1.3"
-    csso "^4.2.0"
-    picocolors "^1.0.0"
-    stable "^0.1.8"
 
 symbol-observable@^4.0.0:
   version "4.0.0"
