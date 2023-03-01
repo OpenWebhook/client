@@ -1837,11 +1837,6 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@sentry/types@^7.2.0":
-  version "7.11.1"
-  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-7.11.1.tgz#06e2827f6ba37159c33644208a0453b86d25e232"
-  integrity sha512-gIEhOPxC2cjrxQ0+K2SFJ1P6e/an5osSxVc9OOtekN28eHtVsXFCLB8XVWeNQnS7N2VkrVrkqORMBz1kvIcvVQ==
-
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.8.3.tgz#3802ddd21a50a949b6721ddd72da36e67e7f1b2d"
@@ -8851,12 +8846,11 @@ postcss@^8.4.16:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
-posthog-js@^1.29.2:
-  version "1.29.2"
-  resolved "https://registry.yarnpkg.com/posthog-js/-/posthog-js-1.29.2.tgz#81f9d89fe9e56e7f4255760add7e2ae4627a8ff3"
-  integrity sha512-icQVesw05WcHBQ/syGlNbt+JLoPhwm8Vabi47vHiuDW+pgq2dJ0/VaafjXiF0VVpQlsUAyi88Bxyz/4A1H+sxQ==
+posthog-js@^1.50.0:
+  version "1.50.0"
+  resolved "https://registry.yarnpkg.com/posthog-js/-/posthog-js-1.50.0.tgz#2aeb659803e0519a5399a46465480b45f23f07d1"
+  integrity sha512-zxC+qe37dthOqcGDqP7k2LjJHh88kExuPDLQ9sKV0Y/wBmjXURISQ0YM2NV8ic5gq2pnfxK6GdedT3/RNX+21A==
   dependencies:
-    "@sentry/types" "^7.2.0"
     fflate "^0.4.1"
     rrweb-snapshot "^1.1.14"
 
