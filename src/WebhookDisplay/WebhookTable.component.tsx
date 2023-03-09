@@ -4,28 +4,6 @@ import React from "react";
 import { Webhook } from "./WebhookList.component";
 import { HeaderGroup, TableInstance } from "react-table";
 
-const largePayloadCellStyle: React.CSSProperties = {
-  width: 500,
-  maxWidth: 500,
-  overflow: "hidden",
-  textOverflow: "ellipsis",
-  whiteSpace: "nowrap",
-};
-
-const FlexContainer: React.FC = (props) => (
-  <div style={{ display: "flex", alignItems: "center" }} {...props} />
-);
-
-const HorzSpacer: React.FC = (props) => (
-  <div
-    style={{
-      display: "inline-block",
-      width: layout.spacingSmall,
-    }}
-    {...props}
-  />
-);
-
 export const WebhookTable: React.FC<{
   webhooks: Webhook[];
   setSelectedWebhook: (webhook: Webhook) => void;
