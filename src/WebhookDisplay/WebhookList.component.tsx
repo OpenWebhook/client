@@ -78,6 +78,35 @@ const useBuildColumns = (data: QueryWebhook | undefined) =>
     [data]
   );
 
+const useBuildTable = (data: QueryWebhook | undefined) => {
+  const columns = useBuildColumns(data);
+
+  const orderedWebhooks = useMemo(() => {
+    return (
+      data?.webhooks?.slice().sort((a, b) => {
+        return Number(b.id) - Number(a.id);
+      }) || []
+    );
+  }, [data]);
+
+  const initialState: UsePaginationState<Webhook> = {
+    pageSize: 15,
+    pageIndex: 0,
+  };
+
+  const table = useTable(
+    {
+      columns,
+      data: orderedWebhooks,
+      // @ts-ignore
+      initialState,
+    },
+    usePagination
+  );
+
+  return { table, orderedWebhooks };
+};
+
 const subscribeToMoreUpdateQuery =
   (path: string | undefined): UpdateQueryFn =>
   (prev, { subscriptionData }): QueryWebhook => {
@@ -136,30 +165,7 @@ const WebhookList: React.FC = () => {
     };
   }, [subscribeToMore]);
 
-  const columns = useBuildColumns(data);
-
-  const orderedWebhooks = useMemo(() => {
-    return (
-      data?.webhooks?.slice().sort((a, b) => {
-        return Number(b.id) - Number(a.id);
-      }) || []
-    );
-  }, [data]);
-
-  const initialState: UsePaginationState<Webhook> = {
-    pageSize: 15,
-    pageIndex: 0,
-  };
-
-  const table = useTable(
-    {
-      columns,
-      data: orderedWebhooks,
-      // @ts-ignore
-      initialState,
-    },
-    usePagination
-  );
+  const { table, orderedWebhooks } = useBuildTable(data);
 
   return orderedWebhooks && orderedWebhooks.length > 0 ? (
     <WebhookPage webhooks={orderedWebhooks} table={table} />
