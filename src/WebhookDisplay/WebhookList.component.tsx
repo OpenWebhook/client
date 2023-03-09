@@ -154,7 +154,6 @@ const WebhookList: React.FC = () => {
     variables: { first: 100, path },
   });
   const { value: webhookStoreUrl } = useContext(WebhookStoreUrlContext);
-
   useEffect(() => {
     const unsuscribe = subscribeToMore<SubscriptionWebhook>({
       document: COMMENTS_SUBSCRIPTION,
@@ -164,9 +163,7 @@ const WebhookList: React.FC = () => {
       unsuscribe();
     };
   }, [subscribeToMore]);
-
   const { table, orderedWebhooks } = useBuildTable(data);
-
   return orderedWebhooks && orderedWebhooks.length > 0 ? (
     <WebhookPage webhooks={orderedWebhooks} table={table} />
   ) : (
