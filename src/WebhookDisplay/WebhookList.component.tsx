@@ -42,7 +42,7 @@ const QUERY_WEBHOOKS = gql`
 `;
 
 type QueryWebhook = {
-  webhooks: Array<Webhook>;
+  webhooks: Array<Webhook> | null;
 };
 
 const COMMENTS_SUBSCRIPTION = gql`
@@ -91,7 +91,7 @@ const WebhookList: React.FC = () => {
         }
         posthog.capture("New webhook received", { webhookId: newWebhook.id });
         return Object.assign({}, prev, {
-          webhooks: [newWebhook, ...prev.webhooks],
+          webhooks: [newWebhook, ...(prev.webhooks || [])],
         });
       },
     });
