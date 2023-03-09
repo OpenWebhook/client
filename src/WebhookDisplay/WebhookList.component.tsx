@@ -12,6 +12,7 @@ import {
 import { forwardWebhookToLocalhost } from "../forward-to-localhost";
 import posthog from "posthog-js";
 import { WebhookStoreUrlContext } from "../WebhookStoreUrl/WebhookStoreUrl.context";
+import { UpdateQueryFn } from "@apollo/client/core/watchQueryOptions";
 
 const largePayloadCellStyle: React.CSSProperties = {
   minWidth: 200,
@@ -77,6 +78,27 @@ const useBuildColumns = (data: QueryWebhook | undefined) =>
     [data]
   );
 
+const subscribeToMoreUpdateQuery =
+  (path: string | undefined): UpdateQueryFn =>
+  (prev, { subscriptionData }): QueryWebhook => {
+    const baseUrl = "http://localhost:8010/proxy";
+    if (!subscriptionData.data) {
+      return prev;
+    }
+    if (path && subscriptionData.data.webhookAdded.path != path) {
+      return prev;
+    }
+    const newWebhook = subscriptionData.data.webhookAdded;
+    try {
+      void forwardWebhookToLocalhost(baseUrl, newWebhook);
+    } catch (err) {
+      console.error(err);
+    }
+    posthog.capture("New webhook received", { webhookId: newWebhook.id });
+    return Object.assign({}, prev, {
+      webhooks: [newWebhook, ...(prev.webhooks || [])],
+    });
+  };
 const COMMENTS_SUBSCRIPTION = gql`
   subscription WebhookAdded {
     webhookAdded {
@@ -102,30 +124,12 @@ const WebhookList: React.FC = () => {
   const { data, subscribeToMore } = useQuery<QueryWebhook>(QUERY_WEBHOOKS, {
     variables: { first: 100, path },
   });
-  const baseUrl = "http://localhost:8010/proxy";
   const { value: webhookStoreUrl } = useContext(WebhookStoreUrlContext);
 
   useEffect(() => {
     const unsuscribe = subscribeToMore<SubscriptionWebhook>({
       document: COMMENTS_SUBSCRIPTION,
-      updateQuery: (prev, { subscriptionData }): QueryWebhook => {
-        if (!subscriptionData.data) {
-          return prev;
-        }
-        if (path && subscriptionData.data.webhookAdded.path != path) {
-          return prev;
-        }
-        const newWebhook = subscriptionData.data.webhookAdded;
-        try {
-          void forwardWebhookToLocalhost(baseUrl, newWebhook);
-        } catch (err) {
-          console.error(err);
-        }
-        posthog.capture("New webhook received", { webhookId: newWebhook.id });
-        return Object.assign({}, prev, {
-          webhooks: [newWebhook, ...(prev.webhooks || [])],
-        });
-      },
+      updateQuery: subscribeToMoreUpdateQuery(path),
     });
     return () => {
       unsuscribe();
