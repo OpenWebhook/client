@@ -12,6 +12,7 @@ import {
 import { forwardWebhookToLocalhost } from "../forward-to-localhost";
 import posthog from "posthog-js";
 import { WebhookStoreUrlContext } from "../WebhookStoreUrl/WebhookStoreUrl.context";
+import { UpdateQueryFn } from "@apollo/client/core/watchQueryOptions";
 
 const largePayloadCellStyle: React.CSSProperties = {
   minWidth: 200,
@@ -45,62 +46,8 @@ type QueryWebhook = {
   webhooks: Array<Webhook> | null;
 };
 
-const COMMENTS_SUBSCRIPTION = gql`
-  subscription WebhookAdded {
-    webhookAdded {
-      id
-      path
-      body
-      headers
-      receivedAt
-    }
-  }
-`;
-
-type SubscriptionWebhook = {
-  webhookAdded: Webhook;
-};
-
-const WebhookList: React.FC = () => {
-  const path = useMemo(
-    () =>
-      window.location.pathname === "/" ? undefined : window.location.pathname,
-    [window.location.pathname]
-  );
-  const { data, subscribeToMore } = useQuery<QueryWebhook>(QUERY_WEBHOOKS, {
-    variables: { first: 100, path },
-  });
-  const baseUrl = "http://localhost:8010/proxy";
-  const { value: webhookStoreUrl } = useContext(WebhookStoreUrlContext);
-
-  useEffect(() => {
-    const unsuscribe = subscribeToMore<SubscriptionWebhook>({
-      document: COMMENTS_SUBSCRIPTION,
-      updateQuery: (prev, { subscriptionData }): QueryWebhook => {
-        if (!subscriptionData.data) {
-          return prev;
-        }
-        if (path && subscriptionData.data.webhookAdded.path != path) {
-          return prev;
-        }
-        const newWebhook = subscriptionData.data.webhookAdded;
-        try {
-          void forwardWebhookToLocalhost(baseUrl, newWebhook);
-        } catch (err) {
-          console.error(err);
-        }
-        posthog.capture("New webhook received", { webhookId: newWebhook.id });
-        return Object.assign({}, prev, {
-          webhooks: [newWebhook, ...(prev.webhooks || [])],
-        });
-      },
-    });
-    return () => {
-      unsuscribe();
-    };
-  }, [subscribeToMore]);
-
-  const columns = React.useMemo<Column<Webhook>[]>(
+const useBuildColumns = (data: QueryWebhook | undefined) =>
+  React.useMemo<Column<Webhook>[]>(
     () => [
       {
         Header: "Id",
@@ -131,6 +78,9 @@ const WebhookList: React.FC = () => {
     [data]
   );
 
+const useBuildTable = (data: QueryWebhook | undefined) => {
+  const columns = useBuildColumns(data);
+
   const orderedWebhooks = useMemo(() => {
     return (
       data?.webhooks?.slice().sort((a, b) => {
@@ -154,6 +104,66 @@ const WebhookList: React.FC = () => {
     usePagination
   );
 
+  return { table, orderedWebhooks };
+};
+
+const subscribeToMoreUpdateQuery =
+  (path: string | undefined): UpdateQueryFn =>
+  (prev, { subscriptionData }): QueryWebhook => {
+    const baseUrl = "http://localhost:8010/proxy";
+    if (!subscriptionData.data) {
+      return prev;
+    }
+    if (path && subscriptionData.data.webhookAdded.path != path) {
+      return prev;
+    }
+    const newWebhook = subscriptionData.data.webhookAdded;
+    try {
+      void forwardWebhookToLocalhost(baseUrl, newWebhook);
+    } catch (err) {
+      console.error(err);
+    }
+    posthog.capture("New webhook received", { webhookId: newWebhook.id });
+    return Object.assign({}, prev, {
+      webhooks: [newWebhook, ...(prev.webhooks || [])],
+    });
+  };
+const COMMENTS_SUBSCRIPTION = gql`
+  subscription WebhookAdded {
+    webhookAdded {
+      id
+      path
+      body
+      headers
+      receivedAt
+    }
+  }
+`;
+
+type SubscriptionWebhook = {
+  webhookAdded: Webhook;
+};
+
+const WebhookList: React.FC = () => {
+  const path = useMemo(
+    () =>
+      window.location.pathname === "/" ? undefined : window.location.pathname,
+    [window.location.pathname]
+  );
+  const { data, subscribeToMore } = useQuery<QueryWebhook>(QUERY_WEBHOOKS, {
+    variables: { first: 100, path },
+  });
+  const { value: webhookStoreUrl } = useContext(WebhookStoreUrlContext);
+  useEffect(() => {
+    const unsuscribe = subscribeToMore<SubscriptionWebhook>({
+      document: COMMENTS_SUBSCRIPTION,
+      updateQuery: subscribeToMoreUpdateQuery(path),
+    });
+    return () => {
+      unsuscribe();
+    };
+  }, [subscribeToMore]);
+  const { table, orderedWebhooks } = useBuildTable(data);
   return orderedWebhooks && orderedWebhooks.length > 0 ? (
     <WebhookPage webhooks={orderedWebhooks} table={table} />
   ) : (
