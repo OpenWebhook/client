@@ -45,6 +45,38 @@ type QueryWebhook = {
   webhooks: Array<Webhook> | null;
 };
 
+const useBuildColumns = (data: QueryWebhook | undefined) =>
+  React.useMemo<Column<Webhook>[]>(
+    () => [
+      {
+        Header: "Id",
+        accessor: (webhook: Webhook) => webhook.id.substring(0, 11),
+        title: "Id",
+        style: { minWidth: "140px" },
+      },
+      {
+        Header: "Path",
+        accessor: (webhook: Webhook) => webhook.path,
+        title: "Path",
+        style: largePayloadCellStyle,
+      },
+      {
+        Header: "Body",
+        accessor: (webhook: Webhook) => webhook.body,
+        title: "Body",
+        style: largePayloadCellStyle,
+      },
+      {
+        Header: "Received at",
+        accessor: (webhook: Webhook) =>
+          new Date(webhook.receivedAt).toLocaleString(),
+        title: "Received at",
+        style: { minWidth: "180px" },
+      },
+    ],
+    [data]
+  );
+
 const COMMENTS_SUBSCRIPTION = gql`
   subscription WebhookAdded {
     webhookAdded {
@@ -100,36 +132,7 @@ const WebhookList: React.FC = () => {
     };
   }, [subscribeToMore]);
 
-  const columns = React.useMemo<Column<Webhook>[]>(
-    () => [
-      {
-        Header: "Id",
-        accessor: (webhook: Webhook) => webhook.id.substring(0, 11),
-        title: "Id",
-        style: { minWidth: "140px" },
-      },
-      {
-        Header: "Path",
-        accessor: (webhook: Webhook) => webhook.path,
-        title: "Path",
-        style: largePayloadCellStyle,
-      },
-      {
-        Header: "Body",
-        accessor: (webhook: Webhook) => webhook.body,
-        title: "Body",
-        style: largePayloadCellStyle,
-      },
-      {
-        Header: "Received at",
-        accessor: (webhook: Webhook) =>
-          new Date(webhook.receivedAt).toLocaleString(),
-        title: "Received at",
-        style: { minWidth: "180px" },
-      },
-    ],
-    [data]
-  );
+  const columns = useBuildColumns(data);
 
   const orderedWebhooks = useMemo(() => {
     return (
