@@ -1,0 +1,25 @@
+diff --git a/node_modules/@pluralsight/ps-design-system-theme/dist/esm/react/index.d.ts b/node_modules/@pluralsight/ps-design-system-theme/dist/esm/react/index.d.ts
+index 18df805..6d0eae7 100644
+--- a/node_modules/@pluralsight/ps-design-system-theme/dist/esm/react/index.d.ts
++++ b/node_modules/@pluralsight/ps-design-system-theme/dist/esm/react/index.d.ts
+@@ -7,6 +7,7 @@ declare type Names = typeof names;
+ export declare const ThemeContext: React.Context<"dark" | "light">;
+ declare type ThemeProps = {
+     name?: ValueOf<Names>;
++    children?: React.ReactNode;
+ };
+ declare type ThemeStatics = {
+     defaultName: typeof defaultName;
+diff --git a/node_modules/@pluralsight/ps-design-system-theme/src/react/index.tsx b/node_modules/@pluralsight/ps-design-system-theme/src/react/index.tsx
+index a2fbd65..10a84ac 100644
+--- a/node_modules/@pluralsight/ps-design-system-theme/src/react/index.tsx
++++ b/node_modules/@pluralsight/ps-design-system-theme/src/react/index.tsx
+@@ -8,7 +8,7 @@ export { defaultName, names }
+ type Names = typeof names
+ export const ThemeContext = React.createContext<ValueOf<Names>>(defaultName)
+ 
+-type ThemeProps = { name?: ValueOf<Names> }
++type ThemeProps = { name?: ValueOf<Names>; children?: React.ReactNode }
+ type ThemeStatics = { defaultName: typeof defaultName; names: Names }
+ type ThemeComponent = React.FC<ThemeProps> & ThemeStatics
+ 

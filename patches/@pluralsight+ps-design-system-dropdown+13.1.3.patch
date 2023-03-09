@@ -1,0 +1,12 @@
+diff --git a/node_modules/@pluralsight/ps-design-system-dropdown/dist/esm/js/index.d.ts b/node_modules/@pluralsight/ps-design-system-dropdown/dist/esm/js/index.d.ts
+index 1741a52..f240f44 100644
+--- a/node_modules/@pluralsight/ps-design-system-dropdown/dist/esm/js/index.d.ts
++++ b/node_modules/@pluralsight/ps-design-system-dropdown/dist/esm/js/index.d.ts
+@@ -286,6 +286,7 @@ export declare const useDropdown: (props: UseDropdownProps, forwardedRef: React.
+         onAnimationIterationCapture?: ((event: React.AnimationEvent<HTMLButtonElement>) => void) | undefined;
+         onTransitionEnd?: ((event: React.TransitionEvent<HTMLButtonElement>) => void) | undefined;
+         onTransitionEndCapture?: ((event: React.TransitionEvent<HTMLButtonElement>) => void) | undefined;
++        //@ts-ignore
+         css?: import("@emotion/core").InterpolationWithTheme<any>;
+         appearance: "default" | "subtle" | undefined;
+         disabled: boolean | undefined;
