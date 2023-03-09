@@ -1,0 +1,20 @@
+diff --git a/node_modules/@pluralsight/ps-design-system-appframe/dist/esm/react/index.d.ts b/node_modules/@pluralsight/ps-design-system-appframe/dist/esm/react/index.d.ts
+index 25aab2a..4ed1b8c 100644
+--- a/node_modules/@pluralsight/ps-design-system-appframe/dist/esm/react/index.d.ts
++++ b/node_modules/@pluralsight/ps-design-system-appframe/dist/esm/react/index.d.ts
+@@ -25,6 +25,7 @@ interface AppFrameStatics {
+ interface AppFrameComponent extends RefForwardingComponent<AppFrameProps, HTMLDivElement, AppFrameStatics> {
+ }
+ declare const AppFrame: AppFrameComponent;
++//@ts-ignore
+ interface SideNavProps extends React.HTMLAttributes<HTMLDivElement> {
+     children: AppFrameProps['sidenav'];
+ }
+@@ -32,6 +33,7 @@ interface SideNavStatics {
+     variants: typeof vars.sidenavVariants;
+ }
+ declare const SideNav: React.FC<SideNavProps> & SideNavStatics;
++//@ts-ignore
+ interface TopNavProps extends React.HTMLAttributes<HTMLDivElement> {
+     children: AppFrameProps['topnav'];
+ }

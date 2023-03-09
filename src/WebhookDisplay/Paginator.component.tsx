@@ -15,7 +15,7 @@ export interface PaginatorProps {
   table: TableInstance<Webhook>;
 }
 
-export const FlexContainer: React.FC = (props) => (
+export const FlexContainer = (props: React.PropsWithChildren) => (
   <div
     style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
     {...props}
