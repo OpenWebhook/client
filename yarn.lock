@@ -1663,6 +1663,16 @@
     fast-glob "^3.1.0"
     svgo "^2.3.1"
 
+"@pluralsight/ps-design-system-icon@^25.4.1":
+  version "25.4.1"
+  resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-icon/-/ps-design-system-icon-25.4.1.tgz#9ca18733eccb65bc03097731d17247b4032c467d"
+  integrity sha512-OcBjsIT7tNHQk3Cnb0Bk9+hHEMzrrN/oXVqeh9jppqg3G2MwQWtjFm/EmVg+tk+3cN9IAD2ZY8Jn0EaAokXcnA==
+  dependencies:
+    "@pluralsight/ps-design-system-core" "^10.0.4"
+    "@pluralsight/ps-design-system-util" "^10.1.3"
+    arg "^4.1.1"
+    fast-glob "^3.1.0"
+
 "@pluralsight/ps-design-system-layout@^12.0.14":
   version "12.0.14"
   resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-layout/-/ps-design-system-layout-12.0.14.tgz#973b6bace75c58da2334f5316c8173d362b7c907"
@@ -1699,13 +1709,13 @@
     "@pluralsight/ps-design-system-halo" "^12.0.8"
     "@pluralsight/ps-design-system-util" "^10.1.3"
 
-"@pluralsight/ps-design-system-navcookiebanner@^4.1.1":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-navcookiebanner/-/ps-design-system-navcookiebanner-4.1.1.tgz#8775db08a90ea184cf40b6b1117e7adb07acd08e"
-  integrity sha512-nTtDCcEqf2tDXnJQWOyW/totaR0yAAMTnO9rcdKaNKlsO7y/0vP4yI/PQNYcbXGRvGZ8hLK0H4dHDg1Kx4Ycfg==
+"@pluralsight/ps-design-system-navcookiebanner@^4.1.3":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-navcookiebanner/-/ps-design-system-navcookiebanner-4.1.3.tgz#56d549bd40d6e36b41fc82f84d1846403065be29"
+  integrity sha512-TepZIMxVB51YgUQCTSZWa9DNAr1jxZKH3YnhlmovMFwzUGyEtDsjwo9bzGHHt5tKua2eUmvny8UMH3i8KeM1OQ==
   dependencies:
     "@pluralsight/ps-design-system-core" "^10.0.4"
-    "@pluralsight/ps-design-system-icon" "^25.4.0"
+    "@pluralsight/ps-design-system-icon" "^25.4.1"
     "@pluralsight/ps-design-system-util" "^10.1.3"
     react-cookie "^4.0.3"
 
@@ -8830,7 +8840,7 @@ postcss@^7.0.14, postcss@^7.0.26, postcss@^7.0.32, postcss@^7.0.36, postcss@^7.0
     picocolors "^0.2.1"
     source-map "^0.6.1"
 
-postcss@^8.0.9, postcss@^8.4.12, postcss@^8.4.16:
+postcss@^8.0.9, postcss@^8.4.16, postcss@^8.4.21:
   version "8.4.21"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.21.tgz#c639b719a57efc3187b13a1d765675485f4134f4"
   integrity sha512-tP7u/Sn/dVxK2NnruI4H9BG+x+Wxz6oeZ1cJ8P6G/PZY0IKk4k/63TDsQf2kQq3+qoJeLm2kIBUNlZe3zgb4Zg==
