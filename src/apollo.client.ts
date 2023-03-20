@@ -29,16 +29,14 @@ export const createApolloClient = (httpUrl: string) => {
       },
     };
   });
-  var accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
 
+  //@Samox TODO make sure the WSlink uses the accesstoken right after it is created or refreshed
   const wsLink = new GraphQLWsLink(
     createClient({
       url: wsUrl,
-      connectionParams: accessToken
-        ? {
-            authToken: accessToken,
-          }
-        : {},
+      connectionParams: {
+        authToken: localStorage.getItem(ACCESS_TOKEN_KEY),
+      },
     })
   );
 
