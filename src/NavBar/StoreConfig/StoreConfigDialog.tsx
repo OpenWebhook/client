@@ -10,24 +10,21 @@ export const StoreConfigInnerDialog = ({
   accessConfig,
 }: {
   availableStores: { url: string; display: string }[];
-  accessConfig: { type: "public" | "private" };
+  accessConfig: { type: "public" | "private"; sublabel: string };
   storageLimit?: number;
   defaultTargets?: string[];
 }) => {
-  console.log(defaultTargets, accessConfig);
-  const accessConfigSublabel =
-    accessConfig.type === "public" ? "Anyone with the link" : "Only you";
   return (
     <>
       <Heading>
         <h1>Store Config</h1>
       </Heading>
       <div style={{ display: "flex" }}>
-        <DataWell label="Access" subLabel={accessConfigSublabel}>
+        <DataWell label="Access" subLabel={accessConfig.sublabel}>
           {accessConfig.type} {accessConfig.type === "public" ? "⚠️" : null}
         </DataWell>
         {storageLimit && (
-          <DataWell label="Storage Limit">100 webhooks</DataWell>
+          <DataWell label="Storage Limit">{storageLimit}</DataWell>
         )}
         {defaultTargets && (
           <DataWell label="Default Target">

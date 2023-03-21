@@ -19,7 +19,7 @@ export function WebhookStoreUrlInput() {
         size={TextInput.sizes.small}
         defaultValue={value}
         onBlur={(event) => {
-          setValue(event.target.value);
+          setValue(new URL(event.target.value).origin);
         }}
       ></TextInput>
     </>
