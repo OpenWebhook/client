@@ -6,6 +6,7 @@ import GitHubButton from "react-github-btn";
 import NavItem from "@pluralsight/ps-design-system-navitem";
 import { ProxyStatus } from "./NavBar/ProxyStatus/ProxyStatus.component";
 import { LoginOrDisplayUser } from "./NavBar/User/LoginOrDisplayUser";
+import { StoreConfigNavItem } from "./NavBar/StoreConfig/StoreConfigNavItem";
 
 function SkillsLogo() {
   return (
@@ -73,6 +74,7 @@ export default function TopNav() {
           <WebhookStoreUrlInput />
         </NavItem>,
         <ProxyStatus key={"ProxyStatus"} />,
+        <StoreConfigNavItem key={"StoreConfig"} />,
       ]}
       utility={
         <NavItem key={"GitHubButton"}>
