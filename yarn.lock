@@ -1618,6 +1618,24 @@
   dependencies:
     "@pluralsight/ps-design-system-util" "^10.1.3"
 
+"@pluralsight/ps-design-system-datawell@^7.0.11":
+  version "7.0.11"
+  resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-datawell/-/ps-design-system-datawell-7.0.11.tgz#e87793720e24d753ab1082e65422e476275e7836"
+  integrity sha512-GNt5v7MjM+QGdDNqL90tNgUW6t8nbom7k/EhzrpdNrZiBfVsmIGj9h7YAEJtQWmRjJq8ZePsYfRvqZkK/wQqtw==
+  dependencies:
+    "@pluralsight/ps-design-system-core" "^10.0.4"
+    "@pluralsight/ps-design-system-text" "^20.1.27"
+    "@pluralsight/ps-design-system-util" "^10.1.3"
+
+"@pluralsight/ps-design-system-dialog@^15.0.12":
+  version "15.0.12"
+  resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-dialog/-/ps-design-system-dialog-15.0.12.tgz#c4c99e584c253e1d727c279d53ff607891a74d06"
+  integrity sha512-siAtI4IagHYDii9bYCjVTre856pxHTP6dAQCR7CDTbph7kOUalYHK62ZZSOtl2xJzAqW59ZzeBsCthCp+XjRYQ==
+  dependencies:
+    "@pluralsight/ps-design-system-core" "^10.0.4"
+    "@pluralsight/ps-design-system-focusmanager" "^8.0.10"
+    "@pluralsight/ps-design-system-util" "^10.1.3"
+
 "@pluralsight/ps-design-system-dropdown@^13.1.1":
   version "13.1.3"
   resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-dropdown/-/ps-design-system-dropdown-13.1.3.tgz#1a6840f76c353f46039175d5c2baf948aeac357e"
@@ -1637,6 +1655,11 @@
   dependencies:
     "@pluralsight/ps-design-system-core" "^10.0.4"
     "@pluralsight/ps-design-system-util" "^10.1.3"
+
+"@pluralsight/ps-design-system-focusmanager@^8.0.10":
+  version "8.0.10"
+  resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-focusmanager/-/ps-design-system-focusmanager-8.0.10.tgz#0cee32013f22857299fe09a0f129099949cc2d09"
+  integrity sha512-jYikS3wwytE1WK5Th7oLq7NyvE6/W1Kfsg1394lJk7O1VVQne22nXmAWFUukfyp+CxFfxF/V2knmFoIsDhoSHg==
 
 "@pluralsight/ps-design-system-halo@^12.0.8":
   version "12.0.8"
@@ -1731,6 +1754,14 @@
   dependencies:
     "@pluralsight/ps-design-system-core" "^10.0.4"
     normalize.css "^8.0.1"
+
+"@pluralsight/ps-design-system-position@^9.1.2":
+  version "9.1.2"
+  resolved "https://registry.yarnpkg.com/@pluralsight/ps-design-system-position/-/ps-design-system-position-9.1.2.tgz#4a30e12336cd3adbeb819599f67031bae28c7a96"
+  integrity sha512-6GuvdDyhTWRvr2lSuztwSbtNuQIvMsHig3+LMXH8q491Rh9QJQub8r53IDQF1ljVJMyDxX+rfwX4CbJtUDom0g==
+  dependencies:
+    "@pluralsight/ps-design-system-core" "^10.0.4"
+    "@pluralsight/ps-design-system-util" "^10.1.3"
 
 "@pluralsight/ps-design-system-screenreaderonly@^5.0.11":
   version "5.0.11"
@@ -11291,6 +11322,25 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
+urs@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/urs/-/urs-0.0.8.tgz#8a0e0b792073cdb7eec926d08ab1e017ffab3f66"
+  integrity sha512-LaSSPpr91XrVA3vW2zPupw4K6DSQEDKdL4yQZX1mO2fpljIMpB5zctrjRvxLurelWSgKsHsCmfHNCImscryirQ==
+
+use-http@^1.0.27:
+  version "1.0.27"
+  resolved "https://registry.yarnpkg.com/use-http/-/use-http-1.0.27.tgz#f0acdecebf7dd7f9f3218dc83a68239658b5d452"
+  integrity sha512-R2V3dzkx+YfIi3Sm35njGFRBzPEyM1AODMx6VSyHiyYzVVq2iYbA3HEjGK5fyw66D8stK5iaP4zU3X7LDmuiyg==
+  dependencies:
+    urs "^0.0.8"
+    use-ssr "^1.0.24"
+    utility-types "^3.10.0"
+
+use-ssr@^1.0.24:
+  version "1.0.25"
+  resolved "https://registry.yarnpkg.com/use-ssr/-/use-ssr-1.0.25.tgz#c7f54b59d6e52db26749b1d4115a650101a190bd"
+  integrity sha512-VYF8kJKI+X7+U4XgGoUER2BUl0vIr+8OhlIhyldgSGE0KHMoDRXPvWeHUUeUktq7ACEOVLzXGq1+QRxcvtwvyQ==
+
 use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
@@ -11327,6 +11377,11 @@ utila@~0.4:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/utila/-/utila-0.4.0.tgz#8a16a05d445657a3aea5eecc5b12a4fa5379772c"
   integrity sha512-Z0DbgELS9/L/75wZbro8xAnT50pBVFQZ+hUEueGDU5FN51YSCYM+jdxsfCiHjwNP/4LCDD0i/graKpeBnOXKRA==
+
+utility-types@^3.10.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.10.0.tgz#ea4148f9a741015f05ed74fd615e1d20e6bed82b"
+  integrity sha512-O11mqxmi7wMKCo6HKFt5AhO4BwY3VV68YU07tgxfz8zJTIxr4BpsezN49Ffwy9j3ZpwwJp4fkRwjRzq3uWE6Rg==
 
 utils-merge@1.0.1:
   version "1.0.1"
