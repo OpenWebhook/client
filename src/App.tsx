@@ -12,7 +12,7 @@ const WebhookList = React.lazy(
   () => import("./WebhookDisplay/WebhookList.component")
 );
 import { ApolloProvider } from "@apollo/client";
-import { WebhookStoreUrlContext } from "./WebhookStoreUrl/WebhookStoreUrl.context";
+import { WebhookStoreUrlContext } from "./NavBar/WebhookStoreUrl/WebhookStoreUrl.context";
 import { createApolloClient } from "./apollo.client";
 import { useStateInLocalStorage } from "./use-state-with-local-storage.hook";
 import { isValidHttpUrl } from "./utils/is-valid-url";

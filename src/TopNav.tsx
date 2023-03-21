@@ -1,11 +1,11 @@
 import NavBar from "@pluralsight/ps-design-system-navbar";
 import NavBrand from "@pluralsight/ps-design-system-navbrand";
 import React from "react";
-import { WebhookStoreUrlInput } from "./WebhookStoreUrl/WebhookStoreUrl.component";
+import { WebhookStoreUrlInput } from "./NavBar/WebhookStoreUrl/WebhookStoreUrl.component";
 import GitHubButton from "react-github-btn";
 import NavItem from "@pluralsight/ps-design-system-navitem";
-import { ProxyStatus } from "./ProxyStatus/ProxyStatus.component";
-import { LoginOrDisplayUser } from "./User/LoginOrDisplayUser";
+import { ProxyStatus } from "./NavBar/ProxyStatus/ProxyStatus.component";
+import { LoginOrDisplayUser } from "./NavBar/User/LoginOrDisplayUser";
 
 function SkillsLogo() {
   return (

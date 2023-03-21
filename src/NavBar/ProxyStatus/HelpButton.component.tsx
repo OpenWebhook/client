@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import helpIcon from "../animations/help.json";
+import helpIcon from "../../animations/help.json";
 import lottie from "lottie-web";
 import { Label } from "@pluralsight/ps-design-system-text";
-import "../animations/animation-container.css";
+import "../../animations/animation-container.css";
 
 const animationName = "help";
 

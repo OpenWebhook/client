@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import NavUser from "@pluralsight/ps-design-system-navuser";
-import { decodeJWT } from "../utils/decode-jwt";
-import { ACCESS_TOKEN_KEY, IDENTITY_TOKEN_KEY } from "../local-storage";
+import { decodeJWT } from "../../utils/decode-jwt";
+import { ACCESS_TOKEN_KEY, IDENTITY_TOKEN_KEY } from "../../local-storage";
 
 const getIdentityTokenFromStorageAndCleanUrl = (): string | null => {
   const storedIdentityToken = localStorage.getItem(IDENTITY_TOKEN_KEY);

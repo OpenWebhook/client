@@ -11,7 +11,7 @@ import {
 } from "react-table";
 import { forwardWebhookToLocalhost } from "../forward-to-localhost";
 import posthog from "posthog-js";
-import { WebhookStoreUrlContext } from "../WebhookStoreUrl/WebhookStoreUrl.context";
+import { WebhookStoreUrlContext } from "../NavBar/WebhookStoreUrl/WebhookStoreUrl.context";
 import { UpdateQueryFn } from "@apollo/client/core/watchQueryOptions";
 
 const largePayloadCellStyle: React.CSSProperties = {
