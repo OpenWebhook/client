@@ -56,12 +56,12 @@ export const StoreConfigNavItem = () => {
   const availableStores = identityToken
     ? [
         {
-          url: `https://${identityToken.payload.name}.github-org.webhook.store/?access_token=${idToken}`,
-          display: `${identityToken.payload.name}.github-org.webhook.store`,
+          url: `https://${identityToken.payload.name}.github.webhook.store/?access_token=${idToken}`,
+          display: `${identityToken.payload.name.toLowerCase()}.github.webhook.store`,
         },
         ...identityToken.payload.ghOrganisations.map((orgName) => ({
-          url: `https://${orgName}.github.webhook.store/?access_token=${idToken}`,
-          display: `${orgName}.github-org.webhook.store`,
+          url: `https://${orgName}.github-org.webhook.store/?access_token=${idToken}`,
+          display: `${orgName.toLowerCase()}.github-org.webhook.store`,
         })),
       ]
     : [

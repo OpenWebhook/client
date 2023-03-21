@@ -22,7 +22,11 @@ export const StoreConfigInnerDialog = ({
         <h1>Store Config</h1>
       </Heading>
       <div style={{ display: "flex" }}>
-        <DataWell label="Access" subLabel={accessConfig.sublabel}>
+        <DataWell
+          style={{ paddingLeft: "0" }}
+          label="Access"
+          subLabel={accessConfig.sublabel}
+        >
           {accessConfig.type} {accessConfig.type === "public" ? "⚠️" : null}
         </DataWell>
         {storageLimit && (
@@ -39,28 +43,28 @@ export const StoreConfigInnerDialog = ({
         )}
       </div>
 
-      {userHasAccessToStore
-        ? "You have access to this store"
-        : "You don't have access to this store"}
+      {userHasAccessToStore ? null : "You don't have access to this store"}
 
       <Heading>
         <h1>Your private webhooks stores</h1>
       </Heading>
 
-      <List>
-        {availableStores.length > 0
-          ? availableStores.map((store) => (
-              <List.Item>
-                <Link>
-                  <a href={store.url}>{store.display}</a>
-                </Link>
-              </List.Item>
-            ))
-          : null}
-      </List>
+      <div style={{ padding: "0 24px" }}>
+        <List type="bulleted">
+          {availableStores.length > 0
+            ? availableStores.map((store) => (
+                <List.Item>
+                  <Link>
+                    <a href={store.url}>{store.display}</a>
+                  </Link>
+                </List.Item>
+              ))
+            : null}
+        </List>
+      </div>
 
       <P>
-        <Link>
+        <Link appearance={Link.appearances.subtle}>
           <a href="https://www.openwebhook.io/docs/intro/#authentication">
             WebhookStore access documentation
           </a>
@@ -68,7 +72,7 @@ export const StoreConfigInnerDialog = ({
       </P>
 
       <P>
-        <Link>
+        <Link appearance={Link.appearances.subtle}>
           <a href="https://www.openwebhook.io/docs/intro/#%EF%B8%8F-public-organisation-membership">
             You don't see your organisation here?
           </a>
