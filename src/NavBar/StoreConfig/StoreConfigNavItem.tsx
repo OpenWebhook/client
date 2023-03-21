@@ -10,16 +10,22 @@ import { WebhookStoreUrlContext } from "../WebhookStoreUrl/WebhookStoreUrl.conte
 import { ACCESS_TOKEN_KEY, IDENTITY_TOKEN_KEY } from "../../local-storage";
 import { decodeJWT } from "../../utils/decode-jwt";
 
+export type AuthMetadata =
+  | { protected: true; protectionRule: "hostname webhook.store" }
+  | { protected: true; protectionRule: "github-org"; ghOrg: string }
+  | { protected: false };
+
 export const StoreConfigNavItem = () => {
   const [isClicked, setClicked] = useState<boolean>(false);
 
-  const [authConfig, setAuthConfig] = useState<{ protected: boolean }>({
+  const [authConfig, setAuthConfig] = useState<AuthMetadata>({
     protected: false,
   });
   const [storeConfig, setStoreConfig] = useState<{
     maxNumberOfWebhookPerHost?: number;
     defaultTarget?: string[];
-  }>({});
+    userHasAccessToStore: boolean;
+  }>({ userHasAccessToStore: false });
 
   const { value: webhookStoreUrl } = useContext(WebhookStoreUrlContext);
   const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
@@ -32,24 +38,21 @@ export const StoreConfigNavItem = () => {
     decodeJWT<{ name: string; ghOrganisations: string[] }, any>(idToken);
 
   useEffect(() => {
-    getAuthConfig();
-    getStoreConfig();
+    getConfigs();
   }, []);
 
-  async function getAuthConfig() {
+  async function getConfigs() {
     const initialiseAuthConfig = await get("auth-metadata");
     if (response.ok) setAuthConfig(initialiseAuthConfig);
-  }
-
-  async function getStoreConfig() {
     const initialiseStoreConfig = await get("store-metadata");
-    if (response.ok) setStoreConfig(initialiseStoreConfig);
+    if (response.ok)
+      setStoreConfig({ ...initialiseStoreConfig, userHasAccessToStore: true });
   }
 
-  const accessConfig = {
-    type: authConfig.protected ? "private" : "public",
-    sublabel: authConfig.protected ? "Only you" : "Anyone with the link",
-  } as const;
+  const accessConfig = describeAccessFromAuthConfig(
+    authConfig,
+    webhookStoreUrl
+  );
   const availableStores = identityToken
     ? [
         {
@@ -57,7 +60,7 @@ export const StoreConfigNavItem = () => {
           display: `${identityToken.payload.name}.github-org.webhook.store`,
         },
         ...identityToken.payload.ghOrganisations.map((orgName) => ({
-          url: `https://${orgName}.github-org.webhook.store/?access_token=${idToken}`,
+          url: `https://${orgName}.github.webhook.store/?access_token=${idToken}`,
           display: `${orgName}.github-org.webhook.store`,
         })),
       ]
@@ -79,6 +82,7 @@ export const StoreConfigNavItem = () => {
             availableStores={availableStores}
             defaultTargets={defaultTargets}
             storageLimit={storageLimit}
+            userHasAccessToStore={storeConfig.userHasAccessToStore}
           />
         </Dialog>
       }
@@ -88,8 +92,49 @@ export const StoreConfigNavItem = () => {
         appearance={Button.appearances.flat}
         onClick={(_) => setClicked(!isClicked)}
       >
-        <Label size={Label.sizes.xSmall}>Store Config ⚠️</Label>
+        <Label size={Label.sizes.xSmall}>
+          Store Config {authConfig.protected ? null : "⚠️"}
+        </Label>
       </Button>
     </Below>
   );
+};
+
+const describeAccessFromAuthConfig = (
+  authConfig: AuthMetadata,
+  webhookStoreUrl: string
+): { type: "public" | "private"; sublabel: string } => {
+  if (!authConfig.protected) {
+    return { type: "public", sublabel: "Anyone with the link" };
+  }
+
+  if (authConfig.protectionRule === "github-org") {
+    return {
+      type: "private",
+      sublabel: `Only members of ${authConfig.ghOrg} on GitHub`,
+    };
+  }
+
+  if (authConfig.protectionRule === "hostname webhook.store") {
+    const webhookStoreDomain = new URL(webhookStoreUrl).hostname;
+    if (webhookStoreDomain.endsWith(".github.webhook.store")) {
+      const githubUserName =
+        webhookStoreDomain.split(".")[webhookStoreDomain.split(".").length - 4];
+      return {
+        type: "private",
+        sublabel: `Only Github user ${githubUserName}`,
+      };
+    }
+    if (webhookStoreDomain.endsWith(".github-org.webhook.store")) {
+      const githubOrgaName =
+        webhookStoreDomain.split(".")[webhookStoreDomain.split(".").length - 4];
+      return {
+        type: "private",
+        sublabel: `Only members of ${githubOrgaName} on GitHub`,
+      };
+    }
+    return { type: "public", sublabel: "Anyone with the link" };
+  }
+
+  return { type: "public", sublabel: "Anyone with the link" };
 };

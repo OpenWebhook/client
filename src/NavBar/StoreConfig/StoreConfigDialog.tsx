@@ -8,11 +8,13 @@ export const StoreConfigInnerDialog = ({
   storageLimit,
   defaultTargets,
   accessConfig,
+  userHasAccessToStore,
 }: {
   availableStores: { url: string; display: string }[];
   accessConfig: { type: "public" | "private"; sublabel: string };
   storageLimit?: number;
   defaultTargets?: string[];
+  userHasAccessToStore: boolean;
 }) => {
   return (
     <>
@@ -37,6 +39,10 @@ export const StoreConfigInnerDialog = ({
         )}
       </div>
 
+      {userHasAccessToStore
+        ? "You have access to this store"
+        : "You don't have access to this store"}
+
       <Heading>
         <h1>Your private webhooks stores</h1>
       </Heading>
@@ -57,6 +63,14 @@ export const StoreConfigInnerDialog = ({
         <Link>
           <a href="https://www.openwebhook.io/docs/intro/#authentication">
             WebhookStore access documentation
+          </a>
+        </Link>
+      </P>
+
+      <P>
+        <Link>
+          <a href="https://www.openwebhook.io/docs/intro/#%EF%B8%8F-public-organisation-membership">
+            You don't see your organisation here?
           </a>
         </Link>
       </P>
