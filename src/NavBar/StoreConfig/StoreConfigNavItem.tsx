@@ -9,11 +9,21 @@ import Dialog from "@pluralsight/ps-design-system-dialog";
 export const StoreConfigNavItem = () => {
   const [isClicked, setClicked] = useState<boolean>(false);
 
+  const accessConfig = { type: "public" } as const;
+  const availableStores = [{ url: "https://google.com", display: "Google" }];
+  const defaultTargets = ["https://google.com", "https://google.com"];
+  const storageLimit = 100;
+
   return (
     <Below
       show={
         <Dialog>
-          <StoreConfigInnerDialog />
+          <StoreConfigInnerDialog
+            accessConfig={accessConfig}
+            availableStores={availableStores}
+            defaultTargets={defaultTargets}
+            storageLimit={storageLimit}
+          />
         </Dialog>
       }
       when={isClicked}
