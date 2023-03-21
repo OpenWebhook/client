@@ -77,6 +77,10 @@ const getAccessToken = async (
     }
   );
   const json = await accessTokenRequest.json();
+  if (json.statusCode > 300) {
+    console.error("Cannot refresh token", json);
+    throw new Error(json.message);
+  }
   const accessToken = json.accessToken;
   localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
 

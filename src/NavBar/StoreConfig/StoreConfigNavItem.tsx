@@ -7,7 +7,7 @@ import { StoreConfigInnerDialog } from "./StoreConfigDialog";
 import Dialog from "@pluralsight/ps-design-system-dialog";
 import useFetch from "use-http";
 import { WebhookStoreUrlContext } from "../WebhookStoreUrl/WebhookStoreUrl.context";
-import { IDENTITY_TOKEN_KEY } from "../../local-storage";
+import { ACCESS_TOKEN_KEY, IDENTITY_TOKEN_KEY } from "../../local-storage";
 import { decodeJWT } from "../../utils/decode-jwt";
 
 export const StoreConfigNavItem = () => {
@@ -16,9 +16,16 @@ export const StoreConfigNavItem = () => {
   const [authConfig, setAuthConfig] = useState<{ protected: boolean }>({
     protected: false,
   });
+  const [storeConfig, setStoreConfig] = useState<{
+    maxNumberOfWebhookPerHost?: number;
+    defaultTarget?: string[];
+  }>({});
 
   const { value: webhookStoreUrl } = useContext(WebhookStoreUrlContext);
-  const { get, response } = useFetch(webhookStoreUrl);
+  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
+  const { get, response } = useFetch(webhookStoreUrl, {
+    headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {},
+  });
   const idToken = localStorage.getItem(IDENTITY_TOKEN_KEY);
   const identityToken =
     idToken &&
@@ -26,11 +33,17 @@ export const StoreConfigNavItem = () => {
 
   useEffect(() => {
     getAuthConfig();
+    getStoreConfig();
   }, []);
 
   async function getAuthConfig() {
     const initialiseAuthConfig = await get("auth-metadata");
     if (response.ok) setAuthConfig(initialiseAuthConfig);
+  }
+
+  async function getStoreConfig() {
+    const initialiseStoreConfig = await get("store-metadata");
+    if (response.ok) setStoreConfig(initialiseStoreConfig);
   }
 
   const accessConfig = {
@@ -54,8 +67,8 @@ export const StoreConfigNavItem = () => {
           display: "github.webhook.store",
         },
       ];
-  const defaultTargets = ["https://google.com", "https://google.com"];
-  const storageLimit = 100;
+  const defaultTargets = storeConfig.defaultTarget;
+  const storageLimit = storeConfig.maxNumberOfWebhookPerHost;
 
   return (
     <Below
