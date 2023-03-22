@@ -29,7 +29,7 @@ export const StoreConfigNavItem = () => {
 
   const { value: webhookStoreUrl } = useContext(WebhookStoreUrlContext);
   const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
-  const { get, response } = useFetch(webhookStoreUrl, {
+  const { get, response } = useFetch(new URL(webhookStoreUrl).origin, {
     headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {},
   });
   const idToken = localStorage.getItem(IDENTITY_TOKEN_KEY);
