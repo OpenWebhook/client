@@ -44,7 +44,7 @@
     "axios": "^0.27.2",
     "buffer": "^6.0.3",
     "graphql": "^16.6.0",
-    "graphql-ws": "^5.10.1",
+    "graphql-ws": "^5.12.1",
     "lottie-web": "^5.9.6",
     "posthog-js": "^1.50.0",
     "prismjs": "^1.28.0",
