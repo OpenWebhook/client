@@ -41,7 +41,7 @@
     "@pluralsight/ps-design-system-theme": "^8.1.24",
     "@pluralsight/ps-design-system-verticaltabs": "^8.1.1",
     "@storybook/react": "^6.4.22",
-    "axios": "^0.27.2",
+    "axios": "^1.3.4",
     "buffer": "^6.0.3",
     "graphql": "^16.6.0",
     "graphql-ws": "^5.10.1",
