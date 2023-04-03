@@ -12,6 +12,9 @@ export const forwardWebhookToLocalhost = async (
     method: "POST",
     url: `${baseUrl}${webhook.path}`,
     data: JSON.parse(webhook.body),
+    headers: {
+      "X-WS-Original-Headers": webhook.headers,
+    },
   };
 
   axios
