@@ -70,9 +70,7 @@ export default function TopNav() {
     <NavBar
       brand={<SkillsBranding />}
       items={[
-        <NavItem key={"WebhookStoreUrlInput"}>
-          <WebhookStoreUrlInput />
-        </NavItem>,
+        <WebhookStoreUrlInput key={"WebhookStoreUrlInput"} />,
         <ProxyStatus key={"ProxyStatus"} />,
         <StoreConfigNavItem key={"StoreConfig"} />,
       ]}
