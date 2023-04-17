@@ -5,6 +5,7 @@ import App from "./App";
 import Honeybadger from "@honeybadger-io/js";
 import { HoneybadgerErrorBoundary } from "@honeybadger-io/react";
 import posthog from "posthog-js";
+import { ENVIRONMENT_KEY } from "./local-storage";
 
 const autoRedirectOnGithubAuth =
   window.location.hostname === "github.webhook.store";
@@ -21,7 +22,18 @@ posthog.init(import.meta.env.VITE_POSTHOG_API_KEY as string, {
   api_host: "https://app.posthog.com",
 });
 
-posthog.capture("my event", { property: "value" });
+const initEnvInLocalStorage = () => {
+  const env = localStorage.getItem(ENVIRONMENT_KEY);
+  if (!env) {
+    if (window.location.origin.startsWith("http://localhost:")) {
+      localStorage.setItem(ENVIRONMENT_KEY, "development");
+    } else {
+      localStorage.setItem(ENVIRONMENT_KEY, "production");
+    }
+  }
+};
+
+initEnvInLocalStorage();
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

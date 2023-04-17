@@ -7,6 +7,7 @@ import NavItem from "@pluralsight/ps-design-system-navitem";
 import { ProxyStatus } from "./NavBar/ProxyStatus/ProxyStatus.component";
 import { LoginOrDisplayUser } from "./NavBar/User/LoginOrDisplayUser";
 import { StoreConfigNavItem } from "./NavBar/StoreConfig/StoreConfigNavItem";
+import { ENVIRONMENT_KEY } from "./local-storage";
 
 function SkillsLogo() {
   return (
@@ -66,13 +67,12 @@ function SkillsBranding(props: any) {
 }
 
 export default function TopNav() {
+  const isDevEnv = localStorage.getItem(ENVIRONMENT_KEY) === "development";
   return (
     <NavBar
       brand={<SkillsBranding />}
       items={[
-        <NavItem key={"WebhookStoreUrlInput"}>
-          <WebhookStoreUrlInput />
-        </NavItem>,
+        isDevEnv ? <WebhookStoreUrlInput key={"WebhookStoreUrlInput"} /> : null,
         <ProxyStatus key={"ProxyStatus"} />,
         <StoreConfigNavItem key={"StoreConfig"} />,
       ]}
