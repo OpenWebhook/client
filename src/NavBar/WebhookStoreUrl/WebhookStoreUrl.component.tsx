@@ -5,7 +5,7 @@ import { WebhookContext } from "../WebhookContext/WebhookContext";
 import NavItem from "@pluralsight/ps-design-system-navitem";
 
 export function WebhookStoreUrlInput() {
-    const { webhookStoreUrl, setWebhooksStoreUrl } = useContext(WebhookContext);
+  const { webhookStoreUrl, setWebhooksStoreUrl } = useContext(WebhookContext);
   return (
     <NavItem key={"WebhookStoreUrlInput"}>
       <Label
