@@ -6,7 +6,7 @@ import Button from "@pluralsight/ps-design-system-button";
 import { StoreConfigInnerDialog } from "./StoreConfigDialog";
 import Dialog from "@pluralsight/ps-design-system-dialog";
 import useFetch from "use-http";
-import { WebhookStoreUrlContext } from "../WebhookStoreUrl/WebhookStoreUrl.context";
+import { WebhookContext } from "../WebhookContext/WebhookContext";
 import { ACCESS_TOKEN_KEY, IDENTITY_TOKEN_KEY } from "../../local-storage";
 import { decodeJWT } from "../../utils/decode-jwt";
 
@@ -27,7 +27,7 @@ export const StoreConfigNavItem = () => {
     userHasAccessToStore: boolean;
   }>({ userHasAccessToStore: false });
 
-  const { value: webhookStoreUrl } = useContext(WebhookStoreUrlContext);
+  const { webhookStoreUrl } = useContext(WebhookContext);
   const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
   const { get, response } = useFetch(new URL(webhookStoreUrl).origin, {
     headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {},

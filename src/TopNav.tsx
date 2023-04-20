@@ -7,6 +7,7 @@ import NavItem from "@pluralsight/ps-design-system-navitem";
 import { ProxyStatus } from "./NavBar/ProxyStatus/ProxyStatus.component";
 import { LoginOrDisplayUser } from "./NavBar/User/LoginOrDisplayUser";
 import { StoreConfigNavItem } from "./NavBar/StoreConfig/StoreConfigNavItem";
+import { DebugUrlInput } from "./NavBar/DebugUrl/DebugUrl.component";
 import { ENVIRONMENT_KEY } from "./local-storage";
 
 function SkillsLogo() {
@@ -73,6 +74,7 @@ export default function TopNav() {
       brand={<SkillsBranding />}
       items={[
         isDevEnv ? <WebhookStoreUrlInput key={"WebhookStoreUrlInput"} /> : null,
+        <DebugUrlInput key={"DebugUrlInput"} />,
         <ProxyStatus key={"ProxyStatus"} />,
         <StoreConfigNavItem key={"StoreConfig"} />,
       ]}

@@ -11,7 +11,7 @@ import {
 } from "react-table";
 import { forwardWebhookToLocalhost } from "../forward-to-localhost";
 import posthog from "posthog-js";
-import { WebhookStoreUrlContext } from "../NavBar/WebhookStoreUrl/WebhookStoreUrl.context";
+import { WebhookContext } from "../NavBar/WebhookContext/WebhookContext";
 import { UpdateQueryFn } from "@apollo/client/core/watchQueryOptions";
 
 const largePayloadCellStyle: React.CSSProperties = {
@@ -153,7 +153,7 @@ const WebhookList: React.FC = () => {
   const { data, subscribeToMore } = useQuery<QueryWebhook>(QUERY_WEBHOOKS, {
     variables: { first: 100, path },
   });
-  const { value: webhookStoreUrl } = useContext(WebhookStoreUrlContext);
+  const { webhookStoreUrl } = useContext(WebhookContext);
   useEffect(() => {
     const unsuscribe = subscribeToMore<SubscriptionWebhook>({
       document: COMMENTS_SUBSCRIPTION,
