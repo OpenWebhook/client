@@ -12,7 +12,7 @@ const WebhookList = React.lazy(
   () => import("./WebhookDisplay/WebhookList.component")
 );
 import { ApolloProvider } from "@apollo/client";
-import { WebhookStoreUrlContext } from "./NavBar/WebhookStoreUrl/WebhookStoreUrl.context";
+import { WebhookContext } from "./NavBar/WebhookContext/WebhookContext";
 import { createApolloClient } from "./apollo.client";
 import { useStateInLocalStorage } from "./use-state-with-local-storage.hook";
 import { isValidHttpUrl } from "./utils/is-valid-url";
@@ -31,11 +31,19 @@ export default function App() {
     isValidHttpUrl
   );
 
+  const [debugUrl, setDebugUrl] = useStateInLocalStorage(
+    "debugUrl",
+    "http://localhost:8010/proxy",
+    isValidHttpUrl
+  );
+
   return (
-    <WebhookStoreUrlContext.Provider
+    <WebhookContext.Provider
       value={{
-        value: webhookStoreUrl,
-        setValue: setWebhooksStoreUrl,
+        webhookStoreUrl,
+        setWebhooksStoreUrl,
+        debugUrl,
+        setDebugUrl,
       }}
     >
       <ApolloProvider client={createApolloClient(webhookStoreUrl)}>
@@ -47,6 +55,6 @@ export default function App() {
           </Suspense>
         </Theme>
       </ApolloProvider>
-    </WebhookStoreUrlContext.Provider>
+    </WebhookContext.Provider>
   );
 }
