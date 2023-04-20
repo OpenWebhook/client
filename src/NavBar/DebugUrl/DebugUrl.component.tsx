@@ -16,11 +16,11 @@ export function DebugUrlInput() {
       </Label>
       <TextInput
         appearance={TextInput.appearances.subtle}
-        placeholder="https://webhook-store.herokuapp.com"
+        placeholder="http://localhost:8010/proxy"
         size={TextInput.sizes.small}
         defaultValue={debugUrl}
         onBlur={(event) => {
-          setDebugUrl(new URL(event.target.value).origin);
+          setDebugUrl(event.target.value);
         }}
       ></TextInput>
     </NavItem>
