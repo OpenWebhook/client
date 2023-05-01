@@ -1220,10 +1220,10 @@
     "@types/aws-lambda" "^8.10.89"
     "@types/express" "^4.17.13"
 
-"@honeybadger-io/react@^5.1.3":
-  version "5.1.3"
-  resolved "https://registry.yarnpkg.com/@honeybadger-io/react/-/react-5.1.3.tgz#45e3d789f2116948594705e6f20b843cdedf2b33"
-  integrity sha512-fI2wpgjA3+KTzLy5PytGZxTCEIc9/OcmNJzEfo1FxFdrqe/ldXW0LWOZih7w988oDL6kpMzUx87CRRl9u/8BXQ==
+"@honeybadger-io/react@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/@honeybadger-io/react/-/react-5.3.0.tgz#38843b92d8451a77d255ce167a6df76d9df8e59c"
+  integrity sha512-kqwPq+FZvnHUOh+IQx+hED5kThOwDlKxO+ojyXDKK5DMYmqOAxYVwkjYsfyZ0akDDyAWmtgCY2Q1WdBlMSCJMg==
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
