@@ -14,7 +14,7 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@apollo/client": "^3.6.9",
+    "@apollo/client": "^3.7.13",
     "@honeybadger-io/js": "^5.1.1",
     "@honeybadger-io/react": "^5.1.3",
     "@pluralsight/ps-design-system-appframe": "^6.1.2",
