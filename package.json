@@ -9,7 +9,7 @@
     "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "jest",
-    "predeploy": "yarn build && cp CNAME ./dist/CNAME",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -d dist",
     "postinstall": "patch-package"
   },
