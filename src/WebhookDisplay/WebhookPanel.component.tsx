@@ -6,15 +6,16 @@ import {
 } from "@pluralsight/ps-design-system-layout";
 import Link from "@pluralsight/ps-design-system-link";
 import { Heading, P } from "@pluralsight/ps-design-system-text";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Code } from "../Code";
 import { forwardWebhookToLocalhost } from "../forward-to-localhost";
 import { Webhook } from "./WebhookList.component";
+import { WebhookContext } from "../NavBar/WebhookContext/WebhookContext";
 
 export const WebhookPanel: React.FC<{
   webhook: Webhook;
 }> = ({ webhook }) => {
-  const baseUrl = "http://localhost:8010/proxy";
+  const { debugUrl } = useContext(WebhookContext);
 
   const [webhookResponse, setWebhookResponse] = useState<{
     code?: number;
@@ -47,7 +48,7 @@ export const WebhookPanel: React.FC<{
           <Button
             key="forwardWebhookToLocalhost"
             onClick={() => {
-              forwardWebhookToLocalhost(baseUrl, webhook, setWebhookResponse);
+              forwardWebhookToLocalhost(debugUrl, webhook, setWebhookResponse);
             }}
           >
             Send
